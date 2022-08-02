@@ -1,0 +1,13 @@
+#Version django
+Django>=4.0.4 
+
+
+
+#Django Bootstrap 
+django-bootstrap-v5>=1.0.11
+
+#Django extension
+django-extensions>=3.2.0
+
+#mysqlclient
+mysqlclient>=2.1.1
