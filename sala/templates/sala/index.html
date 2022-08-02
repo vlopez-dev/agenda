@@ -7,20 +7,26 @@
         <link href="{% static 'js/lib/main.css' %}" rel="stylesheet">
 
     {% endblock extra_css %}
-
-
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      
 <div id="calendar" class="card" style="padding: 50px;">
 
 
     
 
 </div>
+    </div>
+  </div>
+</div>
+
 <div id="EventDetail" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 id="title"class="modal-title"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"onclick="closeModal()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -30,7 +36,7 @@
           <p id="description"></p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="EventDetail.hide()">Close</button>
+          <button id="close_modal" type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal()">Close</button>
         </div>
       </div>
     </div>
@@ -47,34 +53,25 @@
 <script>
     document.addEventListener('DOMContentLoaded',function(){
         var calendarUI = document.getElementById('calendar');
-        
         var calendar = new FullCalendar.Calendar(calendarUI,{
             themeSystem: 'bootstrap5',
-
             headerToolbar: { 
             center: 'title',
             left: 'prev,next,today',
             right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
-
             eventColor: 'green',
-
          },
-         eventClick: function (info) {
-            // alert('Event: ' + info.event.extendedProps.sala);
 
+         eventClick: function (info) {
             document.getElementById('title').innerHTML = info.event.title;
             document.getElementById('description').innerHTML = info.event.extendedProps.description;
             document.getElementById('sala').innerHTML = info.event.extendedProps.sala;
-
             $('#EventDetail').modal('show');
-
-            
         },
-
-            
+        
+         
             events:[
                 {% for r in reservas %}
-
                     {
                         title:"{{r.descripcion}}",
                         start:'{{r.tiempo_inicio | date:"Y-m-d H:i:s" }}',
@@ -83,27 +80,24 @@
                             sala: 'paracelso'
                           },
                           description: 'Reunion en sala paracelso de test'
-
-
-                    }, 
-                    
-
-                    
+                    },    
                 {% endfor %}
             ],
             
             eventDidMount: function(info) {
                 console.log(info.event.extendedProps);
-                // {description: "Lecture", department: "BioChemistry"}
               }
         });
-
-
         calendar.render();
         calendar.setOption('locale','es');
-
-
+        
     })
+
+
+    function closeModal() {
+      $('#EventDetail').modal('hide');
+
+    }
 </script>
 {% endblock extra_js %}
 {% endblock content %}
