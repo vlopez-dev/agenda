@@ -1,0 +1,38 @@
+{% extends 'registration/base.html' %}
+{% load bootstrap5 %}
+
+{% load crispy_forms_tags %}
+{% block title %}Iniciar sesión{% endblock %}
+{% block content %}
+    <section class="sec min-vh-100">
+    <div class="container">
+        <div class="row text-white ">
+            <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                <form  action="" method="post">{% csrf_token %}
+                    <h3 class="mb-4">Registro</h3>
+                    <div class="row">
+                    {{ form.username|as_crispy_field }}
+                    {{form.email|as_crispy_field }}
+
+                    {{form.password1|as_crispy_field }}
+                    {{form.password2|as_crispy_field }}
+                    </div>
+                    <p>
+                        <input type="submit" value="Confirmar" class="btn btn-primary btn-block">
+                    </p>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+</main>
+
+
+
+
+
+{% endblock %}

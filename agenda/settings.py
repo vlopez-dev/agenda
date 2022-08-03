@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'bootstrap5',
-
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'registration',
     'sala',
     'reserva',
     
