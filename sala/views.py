@@ -4,6 +4,6 @@ from reserva.models import Reserva
 
 # Create your views here.
 
-def index(request):
+def home(request):
     reservas = Reserva.objects.all()
     return render(request,"sala/index.html",{'reservas':reservas})

@@ -21,6 +21,8 @@
 
     <!-- Custom styles for this template-->
     <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+
     {% block extra_css %} 
         {% endblock extra_css %} 
 
@@ -47,7 +49,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{% url 'home' %}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -69,10 +71,9 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="{% url 'add_reserva' id %}">Nueva</a>
-                        <a class="collapse-item" href="cards.html">Editar</a>
-                        <a class="collapse-item" href="{% url 'delete_reserva' %}">Eliminar</a>
+                        <h6 class="collapse-header">Reservas:</h6>
+                        <a class="collapse-item" href="{% url 'add_reserva' %}">Nueva</a>
+                        <a class="collapse-item" href="{% url 'listar_reservas' %}">Editar/Eliminar</a>
 
                     </div>
                 </div>
@@ -416,13 +417,15 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'js/app.js'%}"></script>
+
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
@@ -431,7 +434,11 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+
+{% load sweetify %}
+{% sweetify %}
 
 </body>
 

@@ -10,6 +10,7 @@
     <meta name="author" content="">
     {% load static %}
 
+
     <title>SB Admin 2 - Login</title>
 
     <!-- Custom fonts for this template-->
@@ -42,16 +43,19 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
+                                    
+                                    {% block content %}
 
-                                        {% block content %} 
 
-                                        {% endblock content %}
+                                    {% endblock %}
+
+
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
+                                        <a class="small" href="{% url 'signup' %}">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>
@@ -70,7 +74,7 @@
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <script src="v{% static 'endor/jquery-easing/jquery.easing.min.js' %}"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="{% static 'js/sb-admin-2.min.js' %}"></script>

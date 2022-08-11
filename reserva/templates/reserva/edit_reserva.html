@@ -4,5 +4,42 @@
 {% load static %}
 {% block content %}
 
+<table class="table table-striped">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+          <td>id</td>
+          <td>Inicio</td>
+          <td>Fin</td>
+          <td>Usuario</td>
+          <td>Sala</td>    
+        </tr>
+        
+    </thead>
+    <tbody>
+        {% for r in listar_reservas  %}
+            <tr>
+              <td>{{r.id}}</td>
+  
+                <td>{{r.tiempo_inicio}}</td>
+                <td>{{r.tiempo_fin}}</td>
+                <td>{{r.usuario_reserva}}</td>
+                <td>{{r.sala_id_id}}</td>
+
+                  <td>
+                    <a href="{% url 'reserva_update' r.id %}" class="btn text-secondary px-0">
+                      <img src="https://img.icons8.com/stickers/25/000000/edit-calendar.png"/>
+                    </a>
+              
+                    <form action="{% url 'delete_reserva' r.id %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">
+                          <img src="https://img.icons8.com/fluency/25/000000/filled-trash.png"/>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
 
 {% endblock content %}
