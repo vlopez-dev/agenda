@@ -22,6 +22,7 @@
     <!-- Custom styles for this template-->
     <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'vendor/jquery/jquery.js' %}"></script>
 
     {% block extra_css %} 
         {% endblock extra_css %} 
@@ -91,8 +92,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Utilities:</h6>
                         <a class="collapse-item" href="{% url 'add_sala' %}">Nueva</a>
-                        <a class="collapse-item" href="utilities-border.html">Editar</a>
-                        <a class="collapse-item" href="utilities-animation.html">Eliminar</a>
+                        <a class="collapse-item" href="{% url 'listar_salas' %}">Editar/Eliminar</a>
                     </div>
                 </div>
             </li>
@@ -424,9 +424,10 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{% static 'js/app.js'%}"></script>
 
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery/jquery.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
     <!-- Core plugin JavaScript-->
@@ -435,6 +436,7 @@
     <!-- Custom scripts for all pages-->
     <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'js/app.js'%}"></script>
 
 
 {% load sweetify %}

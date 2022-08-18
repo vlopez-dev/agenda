@@ -63,8 +63,6 @@ def verificar_estado(salaid,dateiniciohora,datefinhora):
         return True
     else:
         return False
-# def cambiar_estado(salaid):
-#     Sala.objects.filter(pk=salaid).update(estado=True)
 
 
 

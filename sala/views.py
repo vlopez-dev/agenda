@@ -39,3 +39,23 @@ def add_sala(request,id=0):
 
 
             return redirect('/home/')
+        
+        
+        
+        
+        
+
+def listar_salas(request):
+    context = {'listar_salas': Sala.objects.all()}
+    return render(request, "sala/listar_salas.html", context)
+
+
+
+
+
+def delete_sala(request,id_sala):
+    sala = Sala.objects.get(pk=id_sala)
+    sala.delete()
+    sweetify.success(request, 'Exito', text='Eliminado Correctamente', persistent='Aceptar')
+
+    return redirect('listar_salas')

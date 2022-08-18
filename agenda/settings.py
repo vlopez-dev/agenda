@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'sala',
     'reserva',
     'sweetify',
+    'bootstrap_datepicker_plus'
 
     
 

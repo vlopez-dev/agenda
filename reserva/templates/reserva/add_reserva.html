@@ -7,11 +7,13 @@
 {% load static %}
 {% block content %}
 
+    {{ form.media }}
+
     <div class="container">
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <form class="reserva" method="POST" style="outline: 2px solid red;">
+                <form class="reserva" method="POST">
                     {% csrf_token %} 
                     
                     <div class="form-group">
