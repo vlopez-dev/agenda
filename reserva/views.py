@@ -1,10 +1,13 @@
-import imp
+from datetime import datetime
 from django.shortcuts import redirect, render
 from reserva.forms import ReservaForm
 
 from reserva.models import Reserva
 from sala.models import Sala
 import sweetify
+import pytz
+from django.utils.dateparse import parse_date
+
 
 # Create your views here.
 
@@ -26,8 +29,17 @@ def add_reserva(request,id=0):
                 form = ReservaForm(request.POST,instance= reserva)
             if form.is_valid():
                     salaid=request.POST.get('sala_id')
-                    estadosala=verificar_estado(salaid)
-                    if estadosala==True:
+                    
+                    
+                    iniciohora=request.POST.get('tiempo_inicio')
+                    print(iniciohora)
+                    dateiniciohora = datetime.strptime(iniciohora, '%d/%m/%Y %H:%M:%S')
+
+                    finhora=request.POST.get('tiempo_fin')
+                    datefinhora = datetime.strptime(finhora,'%d/%m/%Y %H:%M:%S')
+
+                    estadosala=verificar_estado(salaid,dateiniciohora,datefinhora)
+                    if estadosala==False:
                         sweetify.error(request, 'Sala ocupada', persistent=':(')
 
                         print("sala ocupada")
@@ -35,7 +47,6 @@ def add_reserva(request,id=0):
                     else:
                         print("sala libre")
                         print(estadosala)
-                        cambiar_estado(salaid)
                         form.save()
                         
                         sweetify.success(request, 'Exito', text='Apagado Correctamente', persistent='Aceptar')
@@ -45,14 +56,15 @@ def add_reserva(request,id=0):
 
 
 
-def verificar_estado(salaid):
-    sala= Sala.objects.get(id=salaid)
-    estado=sala.estado
-    return estado
-
-
-def cambiar_estado(salaid):
-    Sala.objects.filter(pk=salaid).update(estado=True)
+def verificar_estado(salaid,dateiniciohora,datefinhora):
+    utc=pytz.UTC
+    reservas = Reserva.objects.filter(tiempo_fin__range=[dateiniciohora,datefinhora],sala_id_id=salaid)
+    if not reservas:
+        return True
+    else:
+        return False
+# def cambiar_estado(salaid):
+#     Sala.objects.filter(pk=salaid).update(estado=True)
 
 
 
@@ -71,10 +83,7 @@ def listar_reservas(request):
 
 def delete_reserva(request,id_reserva):
     reserva = Reserva.objects.get(pk=id_reserva)
-    salaid=reserva.sala_id_id
-    Sala.objects.filter(pk=salaid).update(estado=False)
-
     reserva.delete()
     sweetify.success(request, 'Exito', text='Eliminado Correctamente', persistent='Aceptar')
 
-    return redirect('home')
+    return redirect('listar_reservas')

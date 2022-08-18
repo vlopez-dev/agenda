@@ -73,9 +73,9 @@
                         start:'{{r.tiempo_inicio | date:"Y-m-d H:i:s" }}',
                         end:'{{r.tiempo_fin | date:"Y-m-d H:i:s" }}',
                         extendedProps: {
-                            sala: 'paracelso'
+                            sala:"{{r.sala_id_id}}",
                           },
-                          description: 'Reunion en sala paracelso de test'
+                          description: 'Reunion en sala paracelso de test',
                     },    
                 {% endfor %}
             ],

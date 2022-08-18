@@ -6,7 +6,7 @@ from django.db import models
 class Sala(models.Model):
     nombre=models.CharField(max_length=150)
     ubicacion=models.CharField(max_length=50)
-    estado=models.BooleanField(null=False,default=False)
+#     estado=models.BooleanField(null=False,default=False)
 
 
     def add(self):

@@ -1,0 +1,57 @@
+{% extends 'sala/base.html' %}
+{% load bootstrap5 %}
+
+{% load crispy_forms_tags %}
+{{form.mobile|as_crispy_field}}
+
+{% load static %}
+{% block content %}
+{% block date_picker %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+{% endblock date_picker %}
+{{ form.date }}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <form class="reserva" method="POST" style="outline: 2px solid red;">
+                    {% csrf_token %} 
+                    
+                    <div class="form-group">
+                        {{ form.nombre|as_crispy_field }}
+            
+                    </div>
+                    <div class="form-group">
+                        {{ form.ubicacion|as_crispy_field }}
+            
+                    </div>
+                   
+                    <button type="submit" class="btn btn-primary">Reservar</button>
+            
+                
+                    
+                </form>
+
+            </div>
+            <div class="col-md-2"></div>
+
+        </div>
+    </div>
+
+    
+
+
+    {% block extra_js %}
+
+    $(function () {
+        $("#id_date").datetimepicker({
+          format: 'd/m/Y H:i',
+        });
+      });
+    {% endblock extra_js %}
+
+
+
+{% endblock content %}

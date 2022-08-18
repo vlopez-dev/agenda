@@ -16,7 +16,11 @@
         "titleBar.activeBackground": "#62b9c0",
         "titleBar.activeForeground": "#15202b",
         "titleBar.inactiveBackground": "#62b9c099",
-        "titleBar.inactiveForeground": "#15202b99"
+        "titleBar.inactiveForeground": "#15202b99",
+        "commandCenter.border": "#15202b99"
     },
-    "peacock.color": "#62b9c0"
+    "peacock.color": "#62b9c0",
+    "cSpell.words": [
+        "sweetify"
+    ]
 }
