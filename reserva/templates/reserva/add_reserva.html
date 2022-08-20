@@ -7,7 +7,11 @@
 {% load static %}
 {% block content %}
 
-    {{ form.media }}
+{% block extra_datetime %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+{% endblock extra_datetime %}
 
     <div class="container">
         <div class="row">
@@ -52,6 +56,27 @@
     
 
 
+    {% block extra_js %}
+    <script>
+        jQuery.datetimepicker.setLocale('es');
+
+        jQuery('#id_tiempo_inicio').datetimepicker({
+
+            format:'d/m/Y H:i:s',
+            inline:false,
+            lang:'es'
+
+
+        });
+        jQuery('#id_tiempo_fin').datetimepicker({
+
+            format:'d/m/Y H:i:s',
+            inline:false,
+            lang:'es'
+        });
+
+      </script>
+    {% endblock extra_js %}
 
 
 

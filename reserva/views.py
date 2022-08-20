@@ -27,6 +27,9 @@ def add_reserva(request,id=0):
             else:
                 reserva = Reserva.objects.get(pk=id)
                 form = ReservaForm(request.POST,instance= reserva)
+                iniciohora=request.POST.get('tiempo_inicio')
+                print(iniciohora)
+
             if form.is_valid():
                     salaid=request.POST.get('sala_id')
                     
