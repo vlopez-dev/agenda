@@ -6,9 +6,10 @@ from django.db import models
 class Reserva(models.Model):
     tiempo_inicio=models.DateTimeField( auto_now=False, auto_now_add=False,blank=True,default=django.utils.timezone.now)
     tiempo_fin=models.DateTimeField( auto_now=False, auto_now_add=False,blank=True,default=django.utils.timezone.now)
-    usuario_reserva=models.CharField(max_length=50,blank=True)
+    username=models.ForeignKey('auth.user',on_delete=models.CASCADE,blank=True,null=True)
     descripcion = models.CharField(max_length=150,blank=True)
-    sala_id = models.ForeignKey('sala.sala',on_delete=models.CASCADE,blank=True,null=True)
+    sala_id = models.ForeignKey('sala.sala',on_delete=models.CASCADE,blank=True,null=True,default=5)
+    
 
 
 
@@ -18,4 +19,4 @@ class Reserva(models.Model):
 
 
     def __str__(self):
-            return self.sala_id
+            return self.name

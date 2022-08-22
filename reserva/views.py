@@ -28,30 +28,18 @@ def add_reserva(request,id=0):
                 reserva = Reserva.objects.get(pk=id)
                 form = ReservaForm(request.POST,instance= reserva)
                 iniciohora=request.POST.get('tiempo_inicio')
-                print(iniciohora)
 
             if form.is_valid():
                     salaid=request.POST.get('sala_id')
-                    
-                    
                     iniciohora=request.POST.get('tiempo_inicio')
-                    print(iniciohora)
                     dateiniciohora = datetime.strptime(iniciohora, '%d/%m/%Y %H:%M:%S')
-
                     finhora=request.POST.get('tiempo_fin')
                     datefinhora = datetime.strptime(finhora,'%d/%m/%Y %H:%M:%S')
-
                     estadosala=verificar_estado(salaid,dateiniciohora,datefinhora)
                     if estadosala==False:
                         sweetify.error(request, 'Sala ocupada', persistent=':(')
-
-                        print("sala ocupada")
-                        print(estadosala)
                     else:
-                        print("sala libre")
-                        print(estadosala)
                         form.save()
-                        
                         sweetify.success(request, 'Exito', text='Apagado Correctamente', persistent='Aceptar')
 
 
@@ -88,3 +76,6 @@ def delete_reserva(request,id_reserva):
     sweetify.success(request, 'Exito', text='Eliminado Correctamente', persistent='Aceptar')
 
     return redirect('listar_reservas')
+
+
+

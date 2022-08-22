@@ -1,11 +1,15 @@
+from cProfile import label
 from pyexpat import model
 from django.db.models import fields
 from django import forms
 from .models import Reserva
 
 class ReservaForm(forms.ModelForm):                     
-   
+    descripcion=forms.CharField(widget=forms.Textarea)
     class Meta:
         model=Reserva
-        fields = ['tiempo_inicio', 'tiempo_fin','usuario_reserva','descripcion','sala_id']
+        fields = ['tiempo_inicio', 'tiempo_fin','username','descripcion','sala_id']
       
+        labels = {
+            'tiempo_inicio':'Inicio','tiempo_fin':'Fin','username':'usuario','descripcion':'Descripción','sala_id':'Sala'
+        }
