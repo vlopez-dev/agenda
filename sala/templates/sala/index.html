@@ -57,12 +57,14 @@
             left: 'prev,next,today',
             right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
             eventColor: 'green',
+
          },
 
          eventClick: function (info) {
             document.getElementById('title').innerHTML = info.event.title;
             document.getElementById('description').innerHTML = info.event.extendedProps.description;
             document.getElementById('sala').innerHTML = info.event.extendedProps.sala;
+
             $('#EventDetail').modal('show');
         },
         
@@ -70,13 +72,14 @@
             events:[
                 {% for r in reservas %}
                     {
-                        title:"{{r.descripcion}}",
-                        start:'{{r.tiempo_inicio | date:"Y-m-d H:i:s" }}',
+                        title: "{{r.descripcion}}",
+                        start: '{{r.tiempo_inicio | date:"Y-m-d H:i:s" }}',
                         end:'{{r.tiempo_fin | date:"Y-m-d H:i:s" }}',
+
                         extendedProps: {
                             sala:"{{r.sala_id_id}}",
                           },
-                          description: 'Reunion en sala paracelso de test',
+                          description: "{{r.descripcion}}",
                     },    
                 {% endfor %}
             ],

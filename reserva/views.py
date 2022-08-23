@@ -39,7 +39,10 @@ def add_reserva(request,id=0):
                     if estadosala==False:
                         sweetify.error(request, 'Sala ocupada', persistent=':(')
                     else:
-                        form.save()
+                        
+                        reserva =form.save(commit=False)
+                        reserva.username=request.user
+                        reserva.save()
                         sweetify.success(request, 'Exito', text='Apagado Correctamente', persistent='Aceptar')
 
 
