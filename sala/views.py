@@ -10,7 +10,8 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
     reservas = Reserva.objects.all()
-    return render(request,"sala/index.html",{'reservas':reservas})
+    salas = Sala.objects.all()
+    return render(request,"sala/index.html",{'reservas':reservas,'salas':salas})
 
 
 

@@ -28,9 +28,11 @@
           </button>
         </div>
         <div class="modal-body">
-            <h4>Lugar:</h4>
-            <p id="sala"></p>
+            <h6 >Lugar:<span id="sala"></span></h6> 
+            <!-- <p id="sala"></p> -->
           <p id="description"></p>
+          <p> invitados:<span id="invitados"></span></p>
+
         </div>
         <div class="modal-footer">
           <button id="close_modal" type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal()">Close</button>
@@ -64,6 +66,8 @@
             document.getElementById('title').innerHTML = info.event.title;
             document.getElementById('description').innerHTML = info.event.extendedProps.description;
             document.getElementById('sala').innerHTML = info.event.extendedProps.sala;
+            document.getElementById('invitados').innerHTML = info.event.extendedProps.invitados;
+
 
             $('#EventDetail').modal('show');
         },
@@ -71,13 +75,21 @@
          
             events:[
                 {% for r in reservas %}
+                    
                     {
-                        title: "{{r.descripcion}}",
+                        title: "{{r.titulo}}",
                         start: '{{r.tiempo_inicio | date:"Y-m-d H:i:s" }}',
                         end:'{{r.tiempo_fin | date:"Y-m-d H:i:s" }}',
 
                         extendedProps: {
-                            sala:"{{r.sala_id_id}}",
+                          invitados: "{{r.invitados}}",
+                          {% for s in salas %}
+                            {% if r.sala_id_id == s.id%}
+                            sala:"{{s.nombre}}",
+                            {% endif %}
+
+                            {% endfor %}
+
                           },
                           description: "{{r.descripcion}}",
                     },    

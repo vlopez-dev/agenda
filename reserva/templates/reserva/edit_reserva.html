@@ -18,12 +18,21 @@
     <tbody>
         {% for r in listar_reservas  %}
             <tr>
+
               <td>{{r.id}}</td>
   
                 <td>{{r.tiempo_inicio}}</td>
                 <td>{{r.tiempo_fin}}</td>
                 <td>{{r.usuario_reserva}}</td>
-                <td>{{r.sala_id_id}}</td>
+
+
+                {% for s in salas  %}
+
+                {% if r.sala_id_id == s.id%}
+
+                <td>{{s.nombre}}</td>
+                {% endif%}
+                {% endfor %}
 
                   <td>
                     <a href="{% url 'reserva_update' r.id %}" class="btn text-secondary px-0">

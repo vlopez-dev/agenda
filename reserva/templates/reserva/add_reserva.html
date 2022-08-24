@@ -27,11 +27,11 @@
                         {{ form.tiempo_fin|as_crispy_field }}
 
                     </div>
-                   
-                    <!-- <div class="form-group">
-                        {{ form.username|as_crispy_field }}
+                    <div class="form-group">
+                        {{ form.titulo|as_crispy_field }}
             
-                    </div> -->
+                    </div>
+                  
                     <div class="form-group">
                         {{ form.descripcion|as_crispy_field }}
             
@@ -39,6 +39,11 @@
             
                     <div class="form-group">
                         {{ form.sala_id|as_crispy_field }}
+            
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.invitados|as_crispy_field }}
             
                     </div>
                     <button type="submit" class="btn btn-primary">Reservar</button>

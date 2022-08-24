@@ -1,3 +1,4 @@
+from collections import UserList
 from datetime import datetime
 from django.shortcuts import redirect, render
 from reserva.forms import ReservaForm
@@ -63,7 +64,7 @@ def verificar_estado(salaid,dateiniciohora,datefinhora):
 
 
 def listar_reservas(request):
-    context = {'listar_reservas': Reserva.objects.all()}
+    context = {'listar_reservas': Reserva.objects.all(),'salas':Sala.objects.all(),}
     return render(request, "reserva/edit_reserva.html", context)
 
 
