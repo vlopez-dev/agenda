@@ -9,7 +9,7 @@
     {% endblock extra_css %}
 
 
-<div id="calendar" class="container" >
+<div id="calendar" class="container shadow" style="padding: 20px;" >
  
   </div>
 
@@ -53,13 +53,13 @@
     document.addEventListener('DOMContentLoaded',function(){
         var calendarUI = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarUI,{
+            contentHeight: 'auto',
             themeSystem: 'bootstrap5',
             headerToolbar: { 
             center: 'title',
             left: 'prev,next,today',
             right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
             eventColor: 'green',
-
          },
 
          eventClick: function (info) {
@@ -95,7 +95,7 @@
                     },    
                 {% endfor %}
             ],
-            
+            eventColor: '#378006',
             eventDidMount: function(info) {
                 console.log(info.event.extendedProps);
               }

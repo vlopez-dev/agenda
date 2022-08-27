@@ -8,7 +8,7 @@ from sala.models import Sala
 import sweetify
 import pytz
 from django.utils.dateparse import parse_date
-
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -64,7 +64,7 @@ def verificar_estado(salaid,dateiniciohora,datefinhora):
 
 
 def listar_reservas(request):
-    context = {'listar_reservas': Reserva.objects.all(),'salas':Sala.objects.all(),}
+    context = {'listar_reservas': Reserva.objects.all(),'salas':Sala.objects.all(),'users':User.objects.all()}
     return render(request, "reserva/edit_reserva.html", context)
 
 

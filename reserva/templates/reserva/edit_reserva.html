@@ -23,7 +23,14 @@
   
                 <td>{{r.tiempo_inicio}}</td>
                 <td>{{r.tiempo_fin}}</td>
-                <td>{{r.usuario_reserva}}</td>
+                {% for u in users  %}
+                {% if r.username_id == u.id%}
+
+
+                <td>{{u.username}}</td>
+                {% endif%}
+
+                {% endfor %}
 
 
                 {% for s in salas  %}
