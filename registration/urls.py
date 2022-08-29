@@ -1,5 +1,9 @@
 from pathlib import Path
 from django.urls import path,include
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 from .views import SignUpView,PasswordResetView
 
 
