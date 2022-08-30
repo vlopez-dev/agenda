@@ -60,7 +60,6 @@
             center: 'title',
             left: 'prev,next,today',
             right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
-            eventColor: 'green',
          },
 
          eventClick: function (info) {
@@ -95,8 +94,8 @@
                           description: "{{r.descripcion}}",
                     },    
                 {% endfor %}
-            ],
-            eventColor: '#378006',
+          ],
+            eventColor: 'red',
             eventDidMount: function(info) {
                 console.log(info.event.extendedProps);
               }
