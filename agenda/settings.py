@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'sala',
     'reserva',
     'sweetify',
-    'colorfield',
 
     
 

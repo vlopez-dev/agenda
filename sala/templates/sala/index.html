@@ -78,6 +78,8 @@
                     
                     {
                         title: "{{r.titulo}}",
+                        description: "{{r.descripcion}}",
+
                         start: '{{r.tiempo_inicio | date:"Y-m-d H:i:s" }}',
                         end:'{{r.tiempo_fin | date:"Y-m-d H:i:s" }}',
 
@@ -86,16 +88,17 @@
                           {% for s in salas %}
                             {% if r.sala_id_id == s.id%}
                             sala:"{{s.nombre}}",
+
                             {% endif %}
 
                             {% endfor %}
-
+                            
                           },
-                          description: "{{r.descripcion}}",
+                          color:"red",            //la solucion de colores esta por aca 
+
                     },    
                 {% endfor %}
           ],
-            eventColor: 'red',
             eventDidMount: function(info) {
                 console.log(info.event.extendedProps);
               }
