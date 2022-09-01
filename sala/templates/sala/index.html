@@ -94,8 +94,13 @@
                             {% endfor %}
                             
                           },
-                          color:"red",            //la solucion de colores esta por aca 
+                          {% for s in salas %}
+                          {% if r.sala_id_id == s.id%}
 
+                            color:"{{s.color}}",            //la solucion de colores esta por aca 
+                            {% endif %}
+
+                            {% endfor %}
                     },    
                 {% endfor %}
           ],
