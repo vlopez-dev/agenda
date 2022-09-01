@@ -28,10 +28,10 @@
           </button>
         </div>
         <div class="modal-body">
-            <h5 >Lugar:  <span id="sala"></span></h5> 
+            <h5 ><span><img src="https://img.icons8.com/material-outlined/20/000000/home--v2.png"/></span> Lugar:  <span id="sala"></span></h5> 
             <hr>
             <!-- <p id="sala"></p> -->
-          <p id="description"></p>
+          <p id="description">Descripción</p>
           <p> invitados: <span id="invitados"></span></p>
 
         </div>
@@ -85,25 +85,27 @@
 
                         extendedProps: {
                           invitados: "{{r.invitados}}",
+                          
                           {% for s in salas %}
                             {% if r.sala_id_id == s.id%}
                             sala:"{{s.nombre}}",
 
                             {% endif %}
 
-                            {% endfor %}
+                          {% endfor %}
                             
                           },
                           {% for s in salas %}
-                          {% if r.sala_id_id == s.id%}
+                            {% if r.sala_id_id == s.id%}
 
                             color:"{{s.color}}",            //la solucion de colores esta por aca 
                             {% endif %}
 
-                            {% endfor %}
+                          {% endfor %}
                     },    
                 {% endfor %}
           ],
+
             eventDidMount: function(info) {
                 console.log(info.event.extendedProps);
               }
