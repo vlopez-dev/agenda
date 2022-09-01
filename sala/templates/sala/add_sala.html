@@ -7,6 +7,9 @@
 {% load static %}
 {% block content %}
 
+{% block extra_css%}
+<link rel="stylesheet" href="https://unpkg.com/huebee@2/dist/huebee.min.css">
+{% endblock extra_css%}
 
     <div class="container">
         <div class="row">
@@ -23,13 +26,20 @@
             
                     </div>
                     <div class="row">
-                        <div class="col-sm">
+                        <div class="col">
                             {{ form.ubicacion|as_crispy_field }}
 
                         </div>
-            
                     </div>
-                   
+
+                        <div class="row">
+                            <div class="col">
+                                {{ form.color|as_crispy_field }}
+                            </div>
+                        </div>
+
+
+                            
                     <button type="submit" class="btn btn-primary">Guardar</button>
             
                 
@@ -43,7 +53,25 @@
     </div>
 
     
+{% block extra_js %}
+<script src="https://unpkg.com/huebee@2/dist/huebee.pkgd.min.js"></script>
+<script>
+    // use selector string to initialize on single element
+var hueb = new Huebee( '.color-input', {
+  // options
+  setBGColor: true,
+  saturations: 2,
+});
 
+// or use element
+var colorInput = document.querySelector('.color-input');
+var hueb = new Huebee( colorInput, {
+  // options
+  setBGColor: true,
+  saturations: 2,
+});
+</script>
+{% endblock extra_js %}
 
 
 

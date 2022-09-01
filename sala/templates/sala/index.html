@@ -60,7 +60,6 @@
             center: 'title',
             left: 'prev,next,today',
             right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
-            eventColor: 'green',
          },
 
          eventClick: function (info) {
@@ -79,6 +78,8 @@
                     
                     {
                         title: "{{r.titulo}}",
+                        description: "{{r.descripcion}}",
+
                         start: '{{r.tiempo_inicio | date:"Y-m-d H:i:s" }}',
                         end:'{{r.tiempo_fin | date:"Y-m-d H:i:s" }}',
 
@@ -87,16 +88,22 @@
                           {% for s in salas %}
                             {% if r.sala_id_id == s.id%}
                             sala:"{{s.nombre}}",
+
                             {% endif %}
 
                             {% endfor %}
-
+                            
                           },
-                          description: "{{r.descripcion}}",
+                          {% for s in salas %}
+                          {% if r.sala_id_id == s.id%}
+
+                            color:"{{s.color}}",            //la solucion de colores esta por aca 
+                            {% endif %}
+
+                            {% endfor %}
                     },    
                 {% endfor %}
-            ],
-            eventColor: '#378006',
+          ],
             eventDidMount: function(info) {
                 console.log(info.event.extendedProps);
               }

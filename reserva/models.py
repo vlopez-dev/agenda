@@ -10,7 +10,7 @@ class Reserva(models.Model):
     tiempo_fin=models.DateTimeField( auto_now=False, auto_now_add=False,blank=True,default=django.utils.timezone.now)
     username=models.ForeignKey('auth.user',on_delete=models.CASCADE,blank=True,null=True)
     descripcion = models.CharField(max_length=200,blank=True)
-    sala_id = models.ForeignKey('sala.sala',on_delete=models.CASCADE,blank=True,null=True,default=5)
+    sala_id = models.ForeignKey('sala.sala',on_delete=models.CASCADE,blank=True,null=True,default=1)
     invitados = models.EmailField(max_length = 254,null=True)
     
 
