@@ -14,3 +14,9 @@ mysqlclient>=2.1.1
 
 #python-decouple
 python-decouple>=3.6
+
+#django-crispy-forms
+django-crispy-forms>=1.14.0
+
+#crispy-bootstrap5
+crispy-bootstrap5>=0.6
