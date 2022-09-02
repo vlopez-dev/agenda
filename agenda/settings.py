@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'reserva',
     'sweetify',
     'colorfield',
+    'configuracion',
+    
 
     
 
