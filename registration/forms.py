@@ -35,3 +35,7 @@ class UserCreationFormWithEmail(UserCreationForm):
                 Column('password', css_class='form-control form-control-user'),
             
         )
+        
+        
+        
+    
