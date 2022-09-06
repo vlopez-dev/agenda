@@ -97,6 +97,24 @@
                 </div>
             </li>
 
+
+             <!-- Nav Item - Utilities Collapse Menu -->
+             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseConfig"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <img src="https://img.icons8.com/carbon-copy/30/ffffff/automatic.png"/>
+                    <span>Configuracion</span>
+                </a>
+                <div id="collapseConfig" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Configuracion:</h6>
+                        <a class="collapse-item" href="{% url 'add_configemail' %}">Email</a>
+                        <a class="collapse-item" href="{% url 'listar_salas' %}">Editar/Eliminar</a>
+                    </div>
+                </div>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 

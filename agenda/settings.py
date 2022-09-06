@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import json
+
+with open('config.json', 'r') as file:config = json.load(file)
+database_name = config['DEFAULT']['DB_NAME']
+database_password = config['DEFAULT']['DB_PASSWORD']
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -90,9 +95,9 @@ WSGI_APPLICATION = 'agenda.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'agenda',
-        'USER': 'proyecto',
-        'PASSWORD': 'proyecto',
+        'NAME': config['DEFAULT']['DB_NAME'],
+        'USER': config['DEFAULT']['DB_USER'],
+        'PASSWORD': config['DEFAULT']['DB_PASSWORD'],
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -147,3 +152,8 @@ LOGOUT_REDIRECT_URL='login'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+EMAIL_HOST = config['EMAIL']['EMAIL_HOST'],
+EMAIL_HOST_USER = config['EMAIL']['EMAIL_HOST_USER'],
+EMAIL_HOST_PASSWORD = config['EMAIL']['EMAIL_HOST_PASSWORD'],
+EMAIL_PORT = config['EMAIL']['EMAIL_PORT'],

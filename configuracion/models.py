@@ -5,7 +5,7 @@ from django.db import models
 
 
 
-class Configuracion(models.Model):
+class ConfigEmail(models.Model):
     email_host=models.CharField(max_length=50)
     host_user = models.CharField(max_length=50)
     host_password = models.CharField(max_length=50)
