@@ -1,3 +1,4 @@
+from email.message import EmailMessage
 from django.shortcuts import render,redirect
 from .models import Sala
 from reserva.models import Reserva
@@ -33,7 +34,9 @@ def add_sala(request,id=0):
                 sala = Sala.objects.get(pk=id)
                 form = SalaForm(request.POST,instance= sala)
             if form.is_valid():
+                   
                     form.save()
+
                     sweetify.success(request, 'Exito', text='Apagado Correctamente', persistent='Aceptar')
             return redirect('/home/')
         
@@ -56,3 +59,5 @@ def delete_sala(request,id_sala):
     sweetify.success(request, 'Exito', text='Eliminado Correctamente', persistent='Aceptar')
 
     return redirect('listar_salas')
+
+

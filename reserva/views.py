@@ -1,5 +1,6 @@
 from collections import UserList
 from datetime import datetime
+from email.message import EmailMessage
 from django.shortcuts import redirect, render
 from reserva.forms import ReservaForm
 
@@ -9,7 +10,8 @@ import sweetify
 import pytz
 from django.utils.dateparse import parse_date
 from django.contrib.auth.models import User
-
+from django.core.mail import send_mail
+from agenda.settings import EMAIL_HOST,EMAIL_HOST_PASSWORD,EMAIL_HOST_USER,EMAIL_PORT
 # Create your views here.
 
 def add_reserva(request,id=0):
@@ -44,6 +46,7 @@ def add_reserva(request,id=0):
                         reserva =form.save(commit=False)
                         reserva.username=request.user
                         reserva.save()
+                        reserva_email()
                         sweetify.success(request, 'Exito', text='Apagado Correctamente', persistent='Aceptar')
 
 
@@ -83,3 +86,9 @@ def delete_reserva(request,id_reserva):
 
 
 
+
+def reserva_email():
+ print (EMAIL_HOST_USER)
+ send_mail('Equipo no responde',"Mensaje de test",EMAIL_HOST_USER,['victorl_222@hotmail.com'],
+    fail_silently=False,)
+ print("Enviado")

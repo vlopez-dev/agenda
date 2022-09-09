@@ -17,6 +17,7 @@ with open('config.json', 'r') as file:config = json.load(file)
 database_name = config['DEFAULT']['DB_NAME']
 database_password = config['DEFAULT']['DB_PASSWORD']
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -30,7 +31,7 @@ SECRET_KEY = 'django-insecure-9!_ppv9@8+h0+f)4cx1lv%hel=f&bm%^ngj9hu)jv0-^4nqe4h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 
 # Application definition
@@ -153,7 +154,7 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-EMAIL_HOST = config['EMAIL']['EMAIL_HOST'],
-EMAIL_HOST_USER = config['EMAIL']['EMAIL_HOST_USER'],
-EMAIL_HOST_PASSWORD = config['EMAIL']['EMAIL_HOST_PASSWORD'],
-EMAIL_PORT = config['EMAIL']['EMAIL_PORT'],
+EMAIL_HOST = config['EMAIL']['EMAIL_HOST']
+EMAIL_HOST_USER = config['EMAIL']['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = config['EMAIL']['EMAIL_HOST_PASSWORD']
+EMAIL_PORT = config['EMAIL']['EMAIL_PORT']
