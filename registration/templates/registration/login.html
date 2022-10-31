@@ -6,7 +6,13 @@
             {% block content %}
 
 
-              
+            <div class="col-md-9 mx-auto mb-5">
+                {% if 'register' in request.GET %}
+                    <p style="color:green"> 
+                        Usuario registrado correctamente.
+                    </p>
+                {% endif%}
+            </div>
                 <form  action="" method="POST" autocomplete="off"  class="user">
                     {% csrf_token %} 
 

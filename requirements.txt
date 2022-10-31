@@ -1,7 +1,8 @@
 #Version django
 Django>=4.0.4 
 
-
+#django-colorfield
+django-colorfield>=0.7.2
 
 #Django Bootstrap 
 django-bootstrap-v5>=1.0.11

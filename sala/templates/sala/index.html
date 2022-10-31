@@ -1,123 +1,132 @@
-{% extends 'sala/base.html' %}
+{% extends 'sala/base.html' %} 
+
 {% load bootstrap5 %}
+ {% load static %} 
+ {% block content %} 
+ {% block extra_css %}
+<link href="{% static 'js/lib/main.css' %}" rel="stylesheet" />
 
-{% load static %}
-{% block content %}
-    {% block extra_css %}
-        <link href="{% static 'js/lib/main.css' %}" rel="stylesheet">
+{% endblock extra_css %}
 
-    {% endblock extra_css %}
-
-
-<div id="calendar" class="container shadow" style="padding: 20px;" >
- 
-  </div>
-
-
-    
-
-   
+<div id="calendar" class="container shadow" style="padding: 20px"></div>
 
 <div id="EventDetail" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 id="title"class="modal-title"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"onclick="closeModal()">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <h5 >Lugar:  <span id="sala"></span></h5> 
-            <hr>
-            <!-- <p id="sala"></p> -->
-          <p id="description"></p>
-          <p> invitados: <span id="invitados"></span></p>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="title" class="modal-title"></h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          onclick="closeModal()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5>Lugar: <span id="sala"></span></h5>
+        <hr />
+        <p id="description">
 
-        </div>
-        <div class="modal-footer">
-          <button id="close_modal" type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal()">Close</button>
-        </div>
+        </p>
+        <hr />
+
+        <p>invitados: <span id="invitados"> </span></p>
+      </div>
+      <div class="modal-footer">
+        <button
+          id="close_modal"
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+          onclick="closeModal()"
+        >
+          Close
+        </button>
       </div>
     </div>
   </div>
+</div>
 
 {% block extra_js %}
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
+  crossorigin="anonymous"
+></script>
 <script src="{% static 'js/lib/main.js' %}"></script>
 <script src="{% static 'js/lib/locales-all.js' %}"></script>
 
 <script>
-    document.addEventListener('DOMContentLoaded',function(){
-        var calendarUI = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarUI,{
-            contentHeight: 'auto',
-            themeSystem: 'bootstrap5',
-            headerToolbar: { 
-            center: 'title',
-            left: 'prev,next,today',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
-         },
+  document.addEventListener('DOMContentLoaded',function(){
+      var calendarUI = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarUI,{
+          contentHeight: 'auto',
+          themeSystem: 'bootstrap5',
+          headerToolbar: {
+          center: 'title',
+          left: 'prev,next,today',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
+       },
 
-         eventClick: function (info) {
-            document.getElementById('title').innerHTML = info.event.title;
-            document.getElementById('description').innerHTML = info.event.extendedProps.description;
-            document.getElementById('sala').innerHTML = info.event.extendedProps.sala;
-            document.getElementById('invitados').innerHTML = info.event.extendedProps.invitados;
+       eventClick: function (info) {
+          document.getElementById('title').innerHTML = info.event.title;
+          document.getElementById('description').innerHTML = info.event.extendedProps.description;
+          document.getElementById('sala').innerHTML = info.event.extendedProps.sala;
+          document.getElementById('invitados').innerHTML = info.event.extendedProps.invitados;
 
 
-            $('#EventDetail').modal('show');
-        },
-        
-         
-            events:[
-                {% for r in reservas %}
-                    
-                    {
-                        title: "{{r.titulo}}",
-                        description: "{{r.descripcion}}",
+          $('#EventDetail').modal('show');
+      },
 
-                        start: '{{r.tiempo_inicio | date:"Y-m-d H:i:s" }}',
-                        end:'{{r.tiempo_fin | date:"Y-m-d H:i:s" }}',
 
-                        extendedProps: {
-                          invitados: "{{r.invitados}}",
-                          {% for s in salas %}
-                            {% if r.sala_id_id == s.id%}
-                            sala:"{{s.nombre}}",
+          events:[
+              {% for r in reservas %}
 
-                            {% endif %}
+                  {
+                      title: "{{r.titulo}}",
+                      description: "{{r.descripcion}}",
 
-                            {% endfor %}
-                            
-                          },
-                          {% for s in salas %}
+                      start: '{{r.tiempo_inicio | date:"Y-m-d H:i:s" }}',
+                      end:'{{r.tiempo_fin | date:"Y-m-d H:i:s" }}',
+
+                      extendedProps: {
+                        invitados: "{{r.invitados}}",
+                        {% for s in salas %}
                           {% if r.sala_id_id == s.id%}
+                          sala:"{{s.nombre}}",
 
-                            color:"{{s.color}}",            //la solucion de colores esta por aca 
-                            {% endif %}
+                          {% endif %}
 
-                            {% endfor %}
-                    },    
-                {% endfor %}
-          ],
-            eventDidMount: function(info) {
-                console.log(info.event.extendedProps);
-              }
-        });
-        calendar.render();
-        calendar.setOption('locale','es');
-        
-    })
+                          {% endfor %}
+
+                        },
+                        {% for s in salas %}
+                        {% if r.sala_id_id == s.id%}
+
+                          color:"{{s.color}}",            //la solucion de colores esta por aca
+                          {% endif %}
+
+                          {% endfor %}
+                  },
+              {% endfor %}
+        ],
+          eventDidMount: function(info) {
+              console.log(info.event.extendedProps);
+            }
+      });
+      calendar.render();
+      calendar.setOption('locale','es');
+
+  })
 
 
-    function closeModal() {
-      $('#EventDetail').modal('hide');
+  function closeModal() {
+    $('#EventDetail').modal('hide');
 
-    }
+  }
 </script>
 {% endblock extra_js %}
-{% endblock content %}
+ {% endblock content %}
