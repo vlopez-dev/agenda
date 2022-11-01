@@ -5,12 +5,8 @@
 {{form.mobile|as_crispy_field}}
 {% block content %}
 
-
-    {% if 'register'  in request.GET %}
-        <p style="color: green;">
-            Registrado con exito!
-        </p>
-    {% endif %}
+    
+  
     <form  action="" method="POST" autocomplete="off"  class="user">
         {% csrf_token %} 
 
@@ -23,6 +19,11 @@
             {{ form.email|as_crispy_field }}
 
         </div>
+        <div class="form-group">
+            {{ form.email|as_crispy_field }}
+
+        </div>
+
         <div class="form-group">
             {{ form.password1|as_crispy_field }}
 

@@ -8,34 +8,20 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Row, Column
 
 
-
-
-
-
-
 class UserCreationFormWithEmail(UserCreationForm):
-    email=forms.EmailField(required=True,help_text="Requerido .254 carácteres como máximo y debe ser un email válido.")
-    
-    class Meta:
-        model=User
-        fields=("username","email","password1","password1")
+    email = forms.EmailField(
+        required=True,
+        help_text="Requerido .254 carácteres como máximo y debe ser un email válido.",
+    )
 
-    def clean_email(self):
-        email=self.cleaned_data.get('email')
-        if User.objects.filter(email=email).exists():
-            raise forms.ValidationError('El email ya esta registrado, prueba con otro')
-        return email
-        
-        
+    class Meta:
+        model = User
+        fields = ("username", "email", "password1", "password1")
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.layout = Layout(
-                Column('username', css_class='form-control form-control-user'),
-                Column('password', css_class='form-control form-control-user'),
-            
+            Column("username", css_class="form-control form-control-user"),
+            Column("password", css_class="form-control form-control-user"),
         )
-        
-        
-        
-    
