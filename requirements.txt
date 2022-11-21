@@ -27,3 +27,5 @@ sweetify>=  2.3.1
 
 #pytz
 pytz>=2022.2.1
+
+whitenoise>=6.2.0
