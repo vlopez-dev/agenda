@@ -33,28 +33,6 @@
         </p>
         <hr />
 
-<<<<<<< HEAD
-<div id="EventDetail" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 id="title"class="modal-title"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"onclick="closeModal()">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <h5 ><span><img src="https://img.icons8.com/material-outlined/20/000000/home--v2.png"/></span> Lugar:  <span id="sala"></span></h5> 
-            <hr>
-            <!-- <p id="sala"></p> -->
-          <p id="description">Descripción</p>
-          <p> invitados: <span id="invitados"></span></p>
-
-        </div>
-        <div class="modal-footer">
-          <button id="close_modal" type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal()">Close</button>
-        </div>
-=======
         <p>invitados: <span id="invitados"> </span></p>
       </div>
       <div class="modal-footer">
@@ -67,7 +45,6 @@
         >
           Close
         </button>
->>>>>>> main
       </div>
     </div>
   </div>
@@ -83,54 +60,6 @@
 <script src="{% static 'js/lib/locales-all.js' %}"></script>
 
 <script>
-<<<<<<< HEAD
-    document.addEventListener('DOMContentLoaded',function(){
-        var calendarUI = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarUI,{
-            contentHeight: 'auto',
-            themeSystem: 'bootstrap5',
-            headerToolbar: { 
-            center: 'title',
-            left: 'prev,next,today',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
-         },
-
-         eventClick: function (info) {
-            document.getElementById('title').innerHTML = info.event.title;
-            document.getElementById('description').innerHTML = info.event.extendedProps.description;
-            document.getElementById('sala').innerHTML = info.event.extendedProps.sala;
-            document.getElementById('invitados').innerHTML = info.event.extendedProps.invitados;
-
-
-            $('#EventDetail').modal('show');
-        },
-        
-         
-            events:[
-                {% for r in reservas %}
-                    
-                    {
-                        title: "{{r.titulo}}",
-                        description: "{{r.descripcion}}",
-
-                        start: '{{r.tiempo_inicio | date:"Y-m-d H:i:s" }}',
-                        end:'{{r.tiempo_fin | date:"Y-m-d H:i:s" }}',
-
-                        extendedProps: {
-                          invitados: "{{r.invitados}}",
-                          
-                          {% for s in salas %}
-                            {% if r.sala_id_id == s.id%}
-                            sala:"{{s.nombre}}",
-
-                            {% endif %}
-
-                          {% endfor %}
-                            
-                          },
-                          {% for s in salas %}
-                            {% if r.sala_id_id == s.id%}
-=======
   document.addEventListener('DOMContentLoaded',function(){
       var calendarUI = document.getElementById('calendar');
       var calendar = new FullCalendar.Calendar(calendarUI,{
@@ -179,7 +108,6 @@
 
                           color:"{{s.color}}",            //la solucion de colores esta por aca
                           {% endif %}
->>>>>>> main
 
                           {% endfor %}
                   },
@@ -192,23 +120,7 @@
       calendar.render();
       calendar.setOption('locale','es');
 
-<<<<<<< HEAD
-                          {% endfor %}
-                    },    
-                {% endfor %}
-          ],
-
-            eventDidMount: function(info) {
-                console.log(info.event.extendedProps);
-              }
-        });
-        calendar.render();
-        calendar.setOption('locale','es');
-        
-    })
-=======
   })
->>>>>>> main
 
 
   function closeModal() {

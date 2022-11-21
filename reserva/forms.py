@@ -20,6 +20,7 @@ class ReservaForm(forms.ModelForm):
             "sala_id",
             "titulo",
             "invitados",
+            "recordatorio"
         ]
 
         labels = {
@@ -28,4 +29,5 @@ class ReservaForm(forms.ModelForm):
             "username": "usuario",
             "descripcion": "Descripción",
             "sala_id": "Sala",
+            "recordatorio":"Recordatorio"
         }

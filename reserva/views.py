@@ -3,6 +3,7 @@ from datetime import datetime
 from email.message import EmailMessage
 from django.shortcuts import redirect, render
 from reserva.forms import ReservaForm
+import threading
 
 from reserva.models import Reserva
 from sala.models import Sala
@@ -13,6 +14,7 @@ from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from agenda.settings import EMAIL_HOST,EMAIL_HOST_PASSWORD,EMAIL_HOST_USER,EMAIL_PORT
 # Create your views here.
+Connected = False
 
 
 def add_reserva(request, id=0):
@@ -111,3 +113,23 @@ def delete_reserva(request, id_reserva):
     )
 
     return redirect("listar_reservas")
+
+
+
+
+def check_reserva():
+    
+
+
+
+
+
+
+
+
+    subtwo = threading.Thread(target=check_reserva)
+    subtwo.start()
+
+
+def envio_record():
+    pass
