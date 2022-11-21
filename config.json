@@ -1,0 +1,30 @@
+{
+    "DEFAULT": {
+        "DB_NAME": "agenda",
+        "DB_USER" : "proyecto",
+        "DB_PASSWORD" : "proyecto",
+        "DB_HOST" : "localhost"
+
+    },
+    "TESTING": {
+        "DB_NAME" :"db_name_testing",
+        "DB_USER" : "db_user_testing",
+        "DB_PASSWORD ": "db_password_testing",
+        "DB_HOST" : "localhost"
+        
+    },
+    "PRODUCTION": {
+        "DB_NAME" : "db_name_production",
+        "DB_USER" :"db_user_production",
+        "DB_PASSWORD" : "db_password_production",
+        "DB_HOST" : "localhost"
+    },
+    "EMAIL": {
+        "EMAIL_HOST" : "",
+        "EMAIL_HOST_USER" :"",
+        "EMAIL_HOST_PASSWORD" : "",
+        "EMAIL_PORT":""
+    }
+
+    
+ }
