@@ -111,3 +111,13 @@ def delete_reserva(request, id_reserva):
     )
 
     return redirect("listar_reservas")
+
+
+
+
+
+
+
+
+def envio_recordatorio(id_reserva):
+    pass
