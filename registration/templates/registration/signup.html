@@ -1,4 +1,4 @@
-{% extends 'registration/base.html' %}
+{% extends 'registration/base-signup.html' %}
 {% load bootstrap5 %}
 
 {% load crispy_forms_tags %}
@@ -12,6 +12,11 @@
 
         <div class="form-group">
             {{ form.username|as_crispy_field }}
+
+        </div>
+
+        <div class="form-group">
+            {{ form.email|as_crispy_field }}
 
         </div>
         <div class="form-group">

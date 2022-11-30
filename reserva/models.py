@@ -26,6 +26,7 @@ class Reserva(models.Model):
         "sala.sala", on_delete=models.CASCADE, blank=True, null=True, default=1
     )
     invitados = models.EmailField(max_length=254, null=True)
+    recordatorio = models.BooleanField(default=True)
 
     def add(self):
         self.save

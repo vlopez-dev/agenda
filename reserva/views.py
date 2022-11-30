@@ -1,5 +1,7 @@
 from collections import UserList
 from datetime import datetime
+from email.message import EmailMessage
+import threading
 from django.shortcuts import redirect, render
 from reserva.forms import ReservaForm
 
@@ -9,7 +11,8 @@ import sweetify
 import pytz
 from django.utils.dateparse import parse_date
 from django.contrib.auth.models import User
-
+from django.core.mail import send_mail
+from agenda.settings import EMAIL_HOST,EMAIL_HOST_PASSWORD,EMAIL_HOST_USER,EMAIL_PORT
 # Create your views here.
 
 
@@ -109,3 +112,18 @@ def delete_reserva(request, id_reserva):
     )
 
     return redirect("listar_reservas")
+
+
+
+
+
+
+
+
+def envio_recordatorio(id_reserva):
+    
+
+
+
+    subtwo = threading.Thread(target=envio_recordatorio)
+    subtwo.start()
