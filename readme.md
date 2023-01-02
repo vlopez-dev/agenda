@@ -1,4 +1,4 @@
-# Inventario
+# Agenda
 _Proyecto realizado para reserva de salas_
 __
 _Envio de mails con cada reserva a varios destinatarios_
