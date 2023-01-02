@@ -1,6 +1,7 @@
 from collections import UserList
 from datetime import datetime
 from email.message import EmailMessage
+import threading
 from django.shortcuts import redirect, render
 from reserva.forms import ReservaForm
 import threading
@@ -117,19 +118,14 @@ def delete_reserva(request, id_reserva):
 
 
 
-def check_reserva():
+
+
+
+
+def envio_recordatorio(id_reserva):
     
 
 
 
-
-
-
-
-
-    subtwo = threading.Thread(target=check_reserva)
+    subtwo = threading.Thread(target=envio_recordatorio)
     subtwo.start()
-
-
-def envio_record():
-    pass

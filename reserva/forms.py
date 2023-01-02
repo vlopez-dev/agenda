@@ -20,7 +20,7 @@ class ReservaForm(forms.ModelForm):
             "sala_id",
             "titulo",
             "invitados",
-            "recordatorio"
+            "recordatorio",
         ]
 
         labels = {
