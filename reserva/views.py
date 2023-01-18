@@ -4,6 +4,7 @@ from email.message import EmailMessage
 import threading
 from django.shortcuts import redirect, render
 from reserva.forms import ReservaForm
+import threading
 
 from reserva.models import Reserva
 from sala.models import Sala
@@ -14,6 +15,7 @@ from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from agenda.settings import EMAIL_HOST,EMAIL_HOST_PASSWORD,EMAIL_HOST_USER,EMAIL_PORT
 # Create your views here.
+Connected = False
 
 
 def add_reserva(request, id=0):
@@ -58,7 +60,12 @@ def add_reserva(request, id=0):
 
 
 
-
+def send_email():
+    subject = 'welcome to GFG world'
+    message = f'Hi {user.username}, thank you for registering in geeksforgeeks.'
+    email_from = EMAIL_HOST_USER
+    recipient_list = [user.email, ]
+    send_mail( subject, message, email_from, recipient_list )
 
 
 
@@ -121,7 +128,7 @@ def delete_reserva(request, id_reserva):
 
 
 def envio_recordatorio(id_reserva):
-    
+
 
 
 
