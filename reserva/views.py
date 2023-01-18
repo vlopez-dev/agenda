@@ -58,7 +58,12 @@ def add_reserva(request, id=0):
 
 
 
-
+def send_email():
+    subject = 'welcome to GFG world'
+    message = f'Hi {user.username}, thank you for registering in geeksforgeeks.'
+    email_from = EMAIL_HOST_USER
+    recipient_list = [user.email, ]
+    send_mail( subject, message, email_from, recipient_list )
 
 
 
@@ -121,7 +126,7 @@ def delete_reserva(request, id_reserva):
 
 
 def envio_recordatorio(id_reserva):
-    
+
 
 
 
