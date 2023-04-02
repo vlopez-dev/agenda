@@ -1,6 +1,5 @@
 from collections import UserList
 from datetime import datetime
-from email.message import EmailMessage
 import threading
 from django.shortcuts import redirect, render
 from reserva.forms import ReservaForm
@@ -14,6 +13,8 @@ from django.utils.dateparse import parse_date
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from agenda.settings import EMAIL_HOST,EMAIL_HOST_PASSWORD,EMAIL_HOST_USER,EMAIL_PORT
+from django.core.mail import EmailMessage
+
 # Create your views here.
 Connected = False
 
@@ -43,6 +44,9 @@ def add_reserva(request, id=0):
             finhora = request.POST.get("tiempo_fin")
             datefinhora = datetime.strptime(finhora, "%d/%m/%Y %H:%M:%S")
             estadosala = verificar_estado(salaid, dateiniciohora, datefinhora)
+            invitados = request.POST.get("invitados")
+            descripcion = request.POST.get("descripcion")
+            print(invitados)
             if estadosala == False:
                 sweetify.error(request, "Sala ocupada", persistent=":(")
             else:
@@ -50,6 +54,7 @@ def add_reserva(request, id=0):
                 reserva = form.save(commit=False)
                 reserva.username = request.user
                 reserva.save()
+                send_email(invitados,descripcion,salaid,iniciohora,finhora)
                 sweetify.success(
                     request, "Exito", text="Apagado Correctamente", persistent="Aceptar"
                 )
@@ -60,12 +65,18 @@ def add_reserva(request, id=0):
 
 
 
-def send_email():
-    subject = 'welcome to GFG world'
-    message = f'Hi {user.username}, thank you for registering in geeksforgeeks.'
-    email_from = EMAIL_HOST_USER
-    recipient_list = [user.email, ]
-    send_mail( subject, message, email_from, recipient_list )
+def send_email(invitados,salaid,descripcion,iniciohora,finhora):
+    sender_email= 'agenda@vic.uy'
+    recipient_list = invitados.split(";")
+
+    
+    email = EmailMessage(
+                subject='Correo desde Web',
+                body=f'Se realizo una reserva de la sala ' + salaid  + 'para el evento ' + descripcion + ' a la hora de inico ' + iniciohora + ' y finalizacion ' + finhora,
+                from_email=sender_email,
+                to=recipient_list,
+            )
+    email.send()
 
 
 
