@@ -12,11 +12,26 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 from pathlib import Path
-import json
+from dotenv import load_dotenv
 
-with open('config.json', 'r') as file:config = json.load(file)
-database_name = config['DEFAULT']['DB_NAME']
-database_password = config['DEFAULT']['DB_PASSWORD']
+
+load_dotenv()
+
+# Obtiene el valor de la variable de entorno DATABASE_URL
+DB_AGENDA_NAME = os.getenv('DB_AGENDA_NAME')
+DB_AGENDA_USER = os.getenv('DB_AGENDA_USER')
+DB_AGENDA_PASSWORD = os.getenv('DB_AGENDA_PASSWORD')
+DB_HOST = os.getenv('DB_HOST')
+DB_PORT = os.getenv('DB_PORT')
+
+
+EMAIL_BACKEND=os.getenv('EMAIL_BACKEND')
+EMAIL_HOST=os.getenv('EMAIL_HOST')
+EMAIL_PORT=os.getenv('EMAIL_PORT')
+EMAIL_HOST_USER=os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD=os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS=os.getenv('EMAIL_USE_TLS')
+EMAIL_USE_SSL=os.getenv('EMAIL_USE_SSL')
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -93,11 +108,11 @@ WSGI_APPLICATION = "agenda.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "agenda",
-        "USER": "proyecto",
-        "PASSWORD": "proyecto",
-        "HOST": "localhost",
-        "PORT": "",
+        "NAME":DB_AGENDA_NAME,
+        "USER":DB_AGENDA_USER,
+        "PASSWORD":DB_AGENDA_PASSWORD,
+        "HOST":DB_HOST,
+        "PORT":DB_PORT,
     }
 }
 
@@ -151,8 +166,10 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-EMAIL_HOST = config['EMAIL']['EMAIL_HOST']
-EMAIL_HOST_USER = config['EMAIL']['EMAIL_HOST_USER']
-EMAIL_HOST_PASSWORD = config['EMAIL']['EMAIL_HOST_PASSWORD']
-EMAIL_PORT = config['EMAIL']['EMAIL_PORT']
-
+EMAIL_BACKEND=EMAIL_BACKEND
+EMAIL_HOST=EMAIL_HOST
+EMAIL_PORT=EMAIL_PORT
+EMAIL_HOST_USER=EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD=EMAIL_HOST_PASSWORD
+EMAIL_USE_TLS=False
+EMAIL_USE_SSL=True
