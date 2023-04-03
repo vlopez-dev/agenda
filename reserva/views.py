@@ -46,7 +46,6 @@ def add_reserva(request, id=0):
             estadosala = verificar_estado(salaid, dateiniciohora, datefinhora)
             invitados = request.POST.get("invitados")
             descripcion = request.POST.get("descripcion")
-            print(invitados)
             if estadosala == False:
                 sweetify.error(request, "Sala ocupada", persistent=":(")
             else:

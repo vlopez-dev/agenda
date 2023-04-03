@@ -18,12 +18,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Obtiene el valor de la variable de entorno DATABASE_URL
-DB_AGENDA_NAME = os.getenv('DB_AGENDA_NAME')
-DB_AGENDA_USER = os.getenv('DB_AGENDA_USER')
-DB_AGENDA_PASSWORD = os.getenv('DB_AGENDA_PASSWORD')
+DB_AGENDA_TEST_NAME = os.getenv('DB_AGENDA_TEST_NAME')
+DB_AGENDA_TEST_USER = os.getenv('DB_AGENDA_TEST_USER')
+DB_AGENDA_TEST_PASSWORD = os.getenv('DB_AGENDA_TEST_PASSWORD')
 DB_HOST = os.getenv('DB_HOST')
 DB_PORT = os.getenv('DB_PORT')
-print(DB_AGENDA_NAME,DB_AGENDA_USER,DB_AGENDA_PASSWORD,DB_HOST,DB_PORT)
 
 
 EMAIL_BACKEND=os.getenv('EMAIL_BACKEND')
@@ -69,6 +68,7 @@ INSTALLED_APPS = [
     "reserva",
     "sweetify",
     "colorfield",
+    'factory',
 ]
 
 MIDDLEWARE = [
@@ -109,9 +109,9 @@ WSGI_APPLICATION = "agenda.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME":DB_AGENDA_NAME,
-        "USER":DB_AGENDA_USER,
-        "PASSWORD":DB_AGENDA_PASSWORD,
+        "NAME":DB_AGENDA_TEST_NAME,
+        "USER":DB_AGENDA_TEST_USER,
+        "PASSWORD":DB_AGENDA_TEST_PASSWORD,
         "HOST":DB_HOST,
         "PORT":DB_PORT,
     }

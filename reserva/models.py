@@ -25,7 +25,7 @@ class Reserva(models.Model):
     sala_id = models.ForeignKey(
         "sala.sala", on_delete=models.CASCADE, blank=True, null=True, default=1
     )
-    invitados = models.CharField(max_length=254, null=True)
+    invitados = models.CharField(max_length=254, null=True,blank=True)
     recordatorio = models.BooleanField(default=True)
 
     def add(self):
