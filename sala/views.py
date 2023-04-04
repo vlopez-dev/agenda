@@ -87,3 +87,15 @@ def delete_sala(request, id_sala):
     )
 
     return redirect("listar_salas")
+
+
+def delte_salas_all(request):
+
+    if request.method == 'POST':
+        ids_sala_delete = request.POST.getlist('ids_sala_delete')
+        Sala.objects.filter(id_sala=ids_sala_delete).delete()
+        return redirect("listar_salas")
+    else:
+        reservas = Reserva.objects.all()
+        return redirect("listar_salas",{'reservas':reservas})
+

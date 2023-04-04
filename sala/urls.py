@@ -10,4 +10,7 @@ urlpatterns = [
     path("addsala/", views.add_sala, name="add_sala"),
     path("listarsalas/", views.listar_salas, name="listar_salas"),
     path("<int:id_sala>/delete_sala", views.delete_sala, name="delete_sala"),
+    path("delete_sala_all/", views.delte_salas_all, name="delete_sala_all"),
+
+    
 ]

@@ -27,7 +27,10 @@
     </thead>
     <tbody>
         {% for r in page_object  %}
+        
             <tr>
+              <td><input type="checkbox" name="eliminar" value="{{ sala.id }}"></td>
+
               <td>{{r.id}}</td>
   
                 <td>{{r.nombre}}</td>
@@ -45,14 +48,17 @@
                         <button type="submit" class="btn">
                           <img src="{% static 'icons/trash-2.svg' %}" alt="">
                         </button>
+                        {% endfor %}
+
+                            <a href="{%url 'delete_sala_all'}">Eliminar Seleccionados</a>
                     </form>
+
                 </td>
             </tr>
-        {% endfor %}
-
      
     </tbody>
   </table>
+
     {% if page_object.has_previous %}
     <a href="?page={{ page_object.previous_page_number }}">Anterior</a>
   {% endif %}
@@ -60,6 +66,5 @@
     {% if page_object.has_next %}
     <a href="?page={{ page_object.next_page_number }}">Siguiente</a>
 {% endif %}
-
 
 {% endblock content %}
