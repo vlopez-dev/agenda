@@ -26,7 +26,7 @@
         
     </thead>
     <tbody>
-        {% for r in listar_salas  %}
+        {% for r in page_object  %}
             <tr>
               <td>{{r.id}}</td>
   
@@ -49,10 +49,17 @@
                 </td>
             </tr>
         {% endfor %}
+
+     
     </tbody>
   </table>
-
-
+    {% if page_object.has_previous %}
+    <a href="?page={{ page_object.previous_page_number }}">Anterior</a>
+  {% endif %}
+  
+    {% if page_object.has_next %}
+    <a href="?page={{ page_object.next_page_number }}">Siguiente</a>
+{% endif %}
 
 
 {% endblock content %}

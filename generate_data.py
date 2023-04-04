@@ -12,9 +12,9 @@ for i in range(1):
     UserFactory()
     
 
-for i in range(1):
+for i in range(25):
      SalaFactory()
     
     
-for i in range(1):
+for i in range(25):
     ReservaFactory()

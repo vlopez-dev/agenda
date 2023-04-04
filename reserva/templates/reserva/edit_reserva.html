@@ -16,49 +16,35 @@
         
     </thead>
     <tbody>
-        {% for r in listar_reservas  %}
+        {% for r in page_object  %}
             <tr>
-
               <td>{{r.id}}</td>
-  
-                <td>{{r.tiempo_inicio}}</td>
-                <td>{{r.tiempo_fin}}</td>
-                {% for u in users  %}
-                {% if r.username_id == u.id%}
-
-
-                <td>{{u.username}}</td>
-                {% endif%}
-
-                {% endfor %}
-
-
-                {% for s in salas  %}
-
-                {% if r.sala_id_id == s.id%}
-
-                <td>{{s.nombre}}</td>
-                {% endif%}
-                {% endfor %}
-
-                  <td style="text-align: center ;">
-                    <a href="{% url 'reserva_update' r.id %}" class="btn text-secondary px-0">
-                      <img src="{% static 'icons/edit.svg' %}" alt="">
-
-                    </a>
-              
-                    <form action="{% url 'delete_reserva' r.id %}" method="post" class="d-inline">
-                        {% csrf_token %}
-                        <button type="submit" class="btn">
-
-
-                          <img src="{% static 'icons/trash-2.svg' %}" alt="">
-                        </button>
-                    </form>
-                </td>
+              <td>{{r.tiempo_inicio}}</td>
+              <td>{{r.tiempo_fin}}</td>
+              <td>{{r.username.username}}</td>
+              <td>{{r.sala_id.nombre}}</td>
+              <td style="text-align: center;">
+                <a href="{% url 'reserva_update' r.id %}" class="btn text-secondary px-0">
+                  <img src="{% static 'icons/edit.svg' %}" alt="">
+                </a>
+                <form action="{% url 'delete_reserva' r.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn">
+                      <img src="{% static 'icons/trash-2.svg' %}" alt="">
+                    </button>
+                </form>
+              </td>
             </tr>
         {% endfor %}
     </tbody>
-  </table>
+</table>
+
+{% if page_object.has_previous %}
+<a href="?page={{ page_object.previous_page_number }}">Anterior</a>
+{% endif %}
+
+{% if page_object.has_next %}
+<a href="?page={{ page_object.next_page_number }}">Siguiente</a>
+{% endif %}
 
 {% endblock content %}

@@ -14,6 +14,8 @@ from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from agenda.settings import EMAIL_HOST,EMAIL_HOST_PASSWORD,EMAIL_HOST_USER,EMAIL_PORT
 from django.core.mail import EmailMessage
+from django.core.paginator import Paginator
+
 
 # Create your views here.
 Connected = False
@@ -93,22 +95,26 @@ def verificar_estado(salaid, dateiniciohora, datefinhora):
 
 
 def listar_reservas(request):
-    """_summary_
-    Funcion para listar las reservas. A su vez listamos todas las Salas
-    y usuarios, para filtrar los mismos en la plantilla
     
-    Args:
-        request (_type_): _description_
-
-    Returns:
-        _type_: Retorno context con todos los datos de reservas, salas y usuarios
-    """
+    
+    reservas = Reserva.objects.select_related('sala_id','username')
+    
+    paginator = Paginator(reservas, 10)
+    page_number = request.GET.get('page')
+    page_object = paginator.get_page(page_number)
+    
     context = {
-        "listar_reservas": Reserva.objects.all(),
-        "salas": Sala.objects.all(),
-        "users": User.objects.all(),
+        'page_object': page_object,
     }
+    
     return render(request, "reserva/edit_reserva.html", context)
+
+
+
+
+
+
+
 
 
 def delete_reserva(request, id_reserva):

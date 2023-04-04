@@ -4,7 +4,7 @@ from reserva.models import Reserva
 from .forms import SalaForm
 import sweetify
 from django.contrib.auth.decorators import login_required
-
+from django.core.paginator import Paginator
 # Create your views here.
 @login_required
 def home(request):
@@ -57,7 +57,15 @@ def listar_salas(request):
     Returns:
         _type_: Retorno context con todas salas
     """
-    context = {"listar_salas": Sala.objects.all()}
+    elements = Sala.objects.all()
+    paginator = Paginator(elements,10)
+    page_number = request.GET.get('page')
+    page_object = paginator.get_page(page_number)
+
+    context ={
+        'page_object':page_object,
+    }
+    
     return render(request, "sala/listar_salas.html", context)
 
 
