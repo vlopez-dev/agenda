@@ -10,8 +10,9 @@
           <td>id</td>
           <td>Inicio</td>
           <td>Fin</td>
-          <td>Usuario</td>
-          <td>Sala</td>    
+          <td>Sala</td>
+          <!-- <td>Usuario</td> -->
+
         </tr>
         
     </thead>
@@ -21,17 +22,18 @@
               <td>{{r.id}}</td>
               <td>{{r.tiempo_inicio}}</td>
               <td>{{r.tiempo_fin}}</td>
-              <td>{{r.username.username}}</td>
               <td>{{r.sala_id.nombre}}</td>
-              <td style="text-align: center;">
+              <!-- <td>{{r.username.username}}</td> -->
+
+              <td>
                 <a href="{% url 'reserva_update' r.id %}" class="btn text-secondary px-0">
                   <img src="{% static 'icons/edit.svg' %}" alt="">
                 </a>
                 <form action="{% url 'delete_reserva' r.id %}" method="post" class="d-inline">
                     {% csrf_token %}
-                    <button type="submit" class="btn">
+                    <a href="">
                       <img src="{% static 'icons/trash-2.svg' %}" alt="">
-                    </button>
+                    </a>
                 </form>
               </td>
             </tr>

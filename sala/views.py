@@ -70,29 +70,30 @@ def listar_salas(request):
     return render(request, "sala/listar_salas.html", context)
 
 
+# @login_required
+# def delete_sala(request, id_sala):
+#     """Funcion para la eliminación de una sala
+
+#     Args:
+#         request (_type_): _description_
+#         id_sala (_type_): id correspondiente a la sala
+
+#     Returns:
+#         _type_: Retorno un mensaje de exito cuando es eliminado
+#     """
+#     sala = Sala.objects.get(pk=id_sala)
+#     sala.delete()
+#     sweetify.success(
+#         request, "Exito", text="Eliminado Correctamente", persistent="Aceptar"
+#     )
+
+#     return redirect("listar_salas")
+
+
+
+
+
 @login_required
-def delete_sala(request, id_sala):
-    """Funcion para la eliminación de una sala
-
-    Args:
-        request (_type_): _description_
-        id_sala (_type_): id correspondiente a la sala
-
-    Returns:
-        _type_: Retorno un mensaje de exito cuando es eliminado
-    """
-    sala = Sala.objects.get(pk=id_sala)
-    sala.delete()
-    sweetify.success(
-        request, "Exito", text="Eliminado Correctamente", persistent="Aceptar"
-    )
-
-    return redirect("listar_salas")
-
-
-
-
-
 def delete_salas_all(request):
     if request.method == 'POST':
         ids_sala_delete = request.POST.getlist('ids_sala_delete')
