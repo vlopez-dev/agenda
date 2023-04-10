@@ -98,9 +98,12 @@ def delete_salas_all(request):
     if request.method == 'POST':
         ids_sala_delete = request.POST.getlist('ids_sala_delete')
         ids_sala_delete = list(map(int, ids_sala_delete))
-
+        
         print(type(ids_sala_delete))
         Sala.objects.filter(id__in=ids_sala_delete).delete()  
+        sweetify.success(
+        request, "Exito", text="Eliminado Correctamente", persistent="Aceptar"
+     )
         return redirect("listar_salas")
         
     else:

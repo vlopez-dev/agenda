@@ -32,3 +32,5 @@ whitenoise>=6.2.0
 
 
 python-dotenv>=1.0.0
+
+django-pagination-bootstrap>= 2.4.6

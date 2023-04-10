@@ -126,6 +126,9 @@ def delete_reserva_all(request):
         ids_reserva_delete = list(map(int,ids_reserva_delete))
         
         Reserva.objects.filter(id__in=ids_reserva_delete).delete()
+        sweetify.success(
+        request, "Exito", text="Eliminado Correctamente", persistent="Aceptar"
+     )
         return redirect("listar_reservas")
     else:
     
