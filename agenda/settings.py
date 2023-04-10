@@ -18,9 +18,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Obtiene el valor de la variable de entorno DATABASE_URL
-DB_AGENDA_NAME = os.getenv('DB_AGENDA_NAME')
-DB_AGENDA_USER = os.getenv('DB_AGENDA_USER')
-DB_AGENDA_PASSWORD = os.getenv('DB_AGENDA_PASSWORD')
+DB_AGENDA_TEST_NAME = os.getenv('DB_AGENDA_TEST_NAME')
+DB_AGENDA_TEST_USER = os.getenv('DB_AGENDA_TEST_USER')
+DB_AGENDA_TEST_PASSWORD = os.getenv('DB_AGENDA_TEST_PASSWORD')
 DB_HOST = os.getenv('DB_HOST')
 DB_PORT = os.getenv('DB_PORT')
 
@@ -68,10 +68,13 @@ INSTALLED_APPS = [
     "reserva",
     "sweetify",
     "colorfield",
+    'factory',
+    'django_pagination_bootstrap',
 ]
 
 MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django_pagination_bootstrap.middleware.PaginationMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -94,6 +97,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.request",
+
             ],
         },
     },
@@ -108,9 +113,9 @@ WSGI_APPLICATION = "agenda.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME":DB_AGENDA_NAME,
-        "USER":DB_AGENDA_USER,
-        "PASSWORD":DB_AGENDA_PASSWORD,
+        "NAME":DB_AGENDA_TEST_NAME,
+        "USER":DB_AGENDA_TEST_USER,
+        "PASSWORD":DB_AGENDA_TEST_PASSWORD,
         "HOST":DB_HOST,
         "PORT":DB_PORT,
     }

@@ -14,6 +14,8 @@ from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from agenda.settings import EMAIL_HOST,EMAIL_HOST_PASSWORD,EMAIL_HOST_USER,EMAIL_PORT
 from django.core.mail import EmailMessage
+from django.core.paginator import Paginator
+
 
 # Create your views here.
 Connected = False
@@ -39,6 +41,7 @@ def add_reserva(request, id=0):
 
         if form.is_valid():
             salaid = request.POST.get("sala_id")
+            print(salaid)
             iniciohora = request.POST.get("tiempo_inicio")
             dateiniciohora = datetime.strptime(iniciohora, "%d/%m/%Y %H:%M:%S")
             finhora = request.POST.get("tiempo_fin")
@@ -46,7 +49,6 @@ def add_reserva(request, id=0):
             estadosala = verificar_estado(salaid, dateiniciohora, datefinhora)
             invitados = request.POST.get("invitados")
             descripcion = request.POST.get("descripcion")
-            print(invitados)
             if estadosala == False:
                 sweetify.error(request, "Sala ocupada", persistent=":(")
             else:
@@ -54,6 +56,7 @@ def add_reserva(request, id=0):
                 reserva = form.save(commit=False)
                 reserva.username = request.user
                 reserva.save()
+                print("Variable antes de enviar mail" + salaid)
                 send_email(invitados,descripcion,salaid,iniciohora,finhora)
                 sweetify.success(
                     request, "Exito", text="Apagado Correctamente", persistent="Aceptar"
@@ -65,10 +68,10 @@ def add_reserva(request, id=0):
 
 
 
-def send_email(invitados,salaid,descripcion,iniciohora,finhora):
+def send_email(invitados,descripcion,salaid,iniciohora,finhora):
     sender_email= 'agenda@vic.uy'
     recipient_list = invitados.split(";")
-
+    print(salaid)
     
     email = EmailMessage(
                 subject='Correo desde Web',
@@ -78,8 +81,10 @@ def send_email(invitados,salaid,descripcion,iniciohora,finhora):
             )
     email.send()
 
+    # Cerrar la conexión SMTP
+    email.get_connection().close()
 
-
+    
 
 
 def verificar_estado(salaid, dateiniciohora, datefinhora):
@@ -94,42 +99,41 @@ def verificar_estado(salaid, dateiniciohora, datefinhora):
 
 
 def listar_reservas(request):
-    """_summary_
-    Funcion para listar las reservas. A su vez listamos todas las Salas
-    y usuarios, para filtrar los mismos en la plantilla
     
-    Args:
-        request (_type_): _description_
-
-    Returns:
-        _type_: Retorno context con todos los datos de reservas, salas y usuarios
-    """
+    
+    reservas = Reserva.objects.select_related('sala_id','username')
+    
+    paginator = Paginator(reservas, 10)
+    page_number = request.GET.get('page')
+    page_object = paginator.get_page(page_number)
+    
     context = {
-        "listar_reservas": Reserva.objects.all(),
-        "salas": Sala.objects.all(),
-        "users": User.objects.all(),
+        'page_object': page_object,
     }
+    
     return render(request, "reserva/edit_reserva.html", context)
 
 
-def delete_reserva(request, id_reserva):
-    """Eliminacion de una Reserva
 
-    Args:
-        request (_type_): _description_
-        id_reserva (_type_): Recibo como argumento el id de reserva para
-        realizar la busqueda de la misma para su eliminacion
 
-    Returns:
-        _type_: Retorno un mensaje con el exito de eliminación
-    """
-    reserva = Reserva.objects.get(pk=id_reserva)
-    reserva.delete()
-    sweetify.success(
+
+
+
+
+def delete_reserva_all(request):
+    if request.method == 'POST':
+        ids_reserva_delete = request.POST.getlist('ids_reserva_delete')
+        ids_reserva_delete = list(map(int,ids_reserva_delete))
+        
+        Reserva.objects.filter(id__in=ids_reserva_delete).delete()
+        sweetify.success(
         request, "Exito", text="Eliminado Correctamente", persistent="Aceptar"
-    )
-
-    return redirect("listar_reservas")
+     )
+        return redirect("listar_reservas")
+    else:
+    
+        reservas = Reserva.objects.all()
+        return redirect("listar_reservas",{'reservas':reservas})
 
 
 
