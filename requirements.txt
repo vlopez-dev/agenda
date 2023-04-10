@@ -38,3 +38,6 @@ django-pagination-bootstrap>= 2.4.6
 #gunicorn
 
 gunicorn>=20.1.0
+
+
+tzdata>= 2023.3
