@@ -68,7 +68,6 @@ INSTALLED_APPS = [
     "reserva",
     "sweetify",
     "colorfield",
-    'factory',
     'django_pagination_bootstrap',
 ]
 
