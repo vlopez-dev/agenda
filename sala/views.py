@@ -104,6 +104,6 @@ def delete_salas_all(request):
         return redirect("listar_salas")
         
     else:
-        reservas = Reserva.objects.all()
-        return redirect("listar_salas",{'reservas':reservas})
+        salas = Sala.objects.all()
+        return redirect("listar_salas",{'salas':salas})
 

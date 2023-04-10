@@ -73,8 +73,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Reservas:</h6>
-                        <a class="collapse-item" href="{% url 'add_reserva' %}">Nueva</a>
-                        <a class="collapse-item" href="{% url 'listar_reservas' %}">Editar/Eliminar</a>
+                        <a id="cerrar-navbar" class="collapse-item" href="{% url 'add_reserva' %}">Nueva</a>
+                        <a  id="cerrar-navbar"class="collapse-item" href="{% url 'listar_reservas' %}">Editar/Eliminar</a>
 
                     </div>
                 </div>
@@ -91,7 +91,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Salas:</h6>
-                        <a class="collapse-item" href="{% url 'add_sala' %}">Nueva</a>
+                        <a id="cerrar-navbar" class="collapse-item" href="{% url 'add_sala' %}">Nueva</a>
                         <a class="collapse-item" href="{% url 'listar_salas' %}">Editar/Eliminar</a>
                     </div>
                 </div>
@@ -352,9 +352,9 @@
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
+    {% comment %} <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
-    </a>
+    </a> {% endcomment %}
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -378,6 +378,17 @@
 
     <!-- Bootstrap core JavaScript-->
 
+    <script>
+        $(document).ready(function() {
+          // Agregue un evento click al enlace de cada elemento del menú
+          $('#accordionSidebar a').click(function() {
+            // Cierra el navbar
+            $('#sidebar').removeClass('show');
+            console.log("Ejecute el cierre")
+          });
+        });
+      </script>
+
     <script src="{% static 'vendor/jquery/jquery.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
@@ -391,7 +402,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{% static 'js/app.js'%}"></script>
 
-
+   
 {% load sweetify %}
 {% sweetify %}
 

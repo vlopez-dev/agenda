@@ -41,6 +41,7 @@ def add_reserva(request, id=0):
 
         if form.is_valid():
             salaid = request.POST.get("sala_id")
+            print(salaid)
             iniciohora = request.POST.get("tiempo_inicio")
             dateiniciohora = datetime.strptime(iniciohora, "%d/%m/%Y %H:%M:%S")
             finhora = request.POST.get("tiempo_fin")
@@ -55,6 +56,7 @@ def add_reserva(request, id=0):
                 reserva = form.save(commit=False)
                 reserva.username = request.user
                 reserva.save()
+                print("Variable antes de enviar mail" + salaid)
                 send_email(invitados,descripcion,salaid,iniciohora,finhora)
                 sweetify.success(
                     request, "Exito", text="Apagado Correctamente", persistent="Aceptar"
@@ -66,10 +68,10 @@ def add_reserva(request, id=0):
 
 
 
-def send_email(invitados,salaid,descripcion,iniciohora,finhora):
+def send_email(invitados,descripcion,salaid,iniciohora,finhora):
     sender_email= 'agenda@vic.uy'
     recipient_list = invitados.split(";")
-
+    print(salaid)
     
     email = EmailMessage(
                 subject='Correo desde Web',
@@ -79,8 +81,10 @@ def send_email(invitados,salaid,descripcion,iniciohora,finhora):
             )
     email.send()
 
+    # Cerrar la conexión SMTP
+    email.get_connection().close()
 
-
+    
 
 
 def verificar_estado(salaid, dateiniciohora, datefinhora):
@@ -116,25 +120,17 @@ def listar_reservas(request):
 
 
 
-
-def delete_reserva(request, id_reserva):
-    """Eliminacion de una Reserva
-
-    Args:
-        request (_type_): _description_
-        id_reserva (_type_): Recibo como argumento el id de reserva para
-        realizar la busqueda de la misma para su eliminacion
-
-    Returns:
-        _type_: Retorno un mensaje con el exito de eliminación
-    """
-    reserva = Reserva.objects.get(pk=id_reserva)
-    reserva.delete()
-    sweetify.success(
-        request, "Exito", text="Eliminado Correctamente", persistent="Aceptar"
-    )
-
-    return redirect("listar_reservas")
+def delete_reserva_all(request):
+    if request.method == 'POST':
+        ids_reserva_delete = request.POST.getlist('ids_reserva_delete')
+        ids_reserva_delete = list(map(int,ids_reserva_delete))
+        
+        Reserva.objects.filter(id__in=ids_reserva_delete).delete()
+        return redirect("listar_reservas")
+    else:
+    
+        reservas = Reserva.objects.all()
+        return redirect("listar_reservas",{'reservas':reservas})
 
 
 

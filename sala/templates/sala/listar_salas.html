@@ -8,6 +8,12 @@
 
     <table class="table table-striped">
         <thead class="border-bottom font-weight-bold">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="seleccionar-todo">
+                <label class="form-check-label" for="seleccionar-todo">
+                    Seleccionar todo
+                </label>
+            </div>
             <tr>
                 <td></td>
                 <td>id</td>
@@ -39,7 +45,10 @@
         </tbody>
     </table>
 
-    <button type="submit" class="btn btn-danger">Eliminar seleccionados</button>
+    <button type="submit" class="btn btn-danger float-right">
+        <img src="{% static 'icons/trash-all.svg' %}" alt="">
+
+    </button>
 
 </form>
 
@@ -64,6 +73,18 @@
     </ul>
   </nav>
 
+  {% block scripts %}
+  <script>
+    const selectAllCheckbox = document.getElementById('seleccionar-todo');
+    const checkboxes = document.getElementsByName('ids_sala_delete');
+
+    selectAllCheckbox.addEventListener('change', (event) => {
+      checkboxes.forEach((checkbox) => {
+        checkbox.checked = event.target.checked;
+      });
+    });
+  </script>
+{% endblock %}
 
 
 
