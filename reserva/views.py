@@ -15,6 +15,7 @@ from django.core.mail import send_mail
 from agenda.settings import EMAIL_HOST,EMAIL_HOST_PASSWORD,EMAIL_HOST_USER,EMAIL_PORT
 from django.core.mail import EmailMessage
 from django.core.paginator import Paginator
+from django.contrib import messages
 
 
 # Create your views here.
@@ -56,11 +57,17 @@ def add_reserva(request, id=0):
                 reserva = form.save(commit=False)
                 reserva.username = request.user
                 reserva.save()
-                print("Variable antes de enviar mail" + salaid)
-                send_email(invitados,descripcion,salaid,iniciohora,finhora)
-                sweetify.success(
-                    request, "Exito", text="Apagado Correctamente", persistent="Aceptar"
-                )
+                # print("Variable antes de enviar mail" + salaid)
+                result_env=send_email(invitados,descripcion,salaid,iniciohora,finhora,request)
+                if result_env == None:
+                    sweetify.error(request, 'Error en el envio de mail, se realizo la reserva igualmente', persistent=":(")
+                    print(result_env)
+
+                else:
+
+                    sweetify.success(
+                        request, "Exito", text="Apagado Correctamente", persistent="Aceptar"
+                    )
 
         return redirect("/home/")
 
@@ -68,10 +75,10 @@ def add_reserva(request, id=0):
 
 
 
-def send_email(invitados,descripcion,salaid,iniciohora,finhora):
+def send_email(invitados,descripcion,salaid,iniciohora,finhora,request):
     sender_email= 'agenda@vic.uy'
     recipient_list = invitados.split(";")
-    print(salaid)
+    # print(salaid)
     
     email = EmailMessage(
                 subject='Correo desde Web',
@@ -79,12 +86,17 @@ def send_email(invitados,descripcion,salaid,iniciohora,finhora):
                 from_email=sender_email,
                 to=recipient_list,
             )
-    email.send()
+    try:
+        
 
-    # Cerrar la conexión SMTP
-    email.get_connection().close()
+        email.send()
+        
+    except Exception as e:
+        print("error al enviar")
+    finally:
+        email.get_connection().close()
+        print("Se cerro la conexion")
 
-    
 
 
 def verificar_estado(salaid, dateiniciohora, datefinhora):
