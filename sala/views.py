@@ -58,7 +58,7 @@ def listar_salas(request):
     Returns:
         _type_: Retorno context con todas salas
     """
-    elements = Sala.objects.all()
+    elements = Sala.objects.all().order_by('id')
     paginator = Paginator(elements,10)
     page_number = request.GET.get('page')
     page_object = paginator.get_page(page_number)
@@ -70,24 +70,24 @@ def listar_salas(request):
     return render(request, "sala/listar_salas.html", context)
 
 
-# @login_required
-# def delete_sala(request, id_sala):
-#     """Funcion para la eliminación de una sala
+@login_required
+def delete_sala(request, id_sala):
+    """Funcion para la eliminación de una sala
 
-#     Args:
-#         request (_type_): _description_
-#         id_sala (_type_): id correspondiente a la sala
+    Args:
+        request (_type_): _description_
+        id_sala (_type_): id correspondiente a la sala
 
-#     Returns:
-#         _type_: Retorno un mensaje de exito cuando es eliminado
-#     """
-#     sala = Sala.objects.get(pk=id_sala)
-#     sala.delete()
-#     sweetify.success(
-#         request, "Exito", text="Eliminado Correctamente", persistent="Aceptar"
-#     )
+    Returns:
+        _type_: Retorno un mensaje de exito cuando es eliminado
+    """
+    sala = Sala.objects.get(pk=id_sala)
+    sala.delete()
+    sweetify.success(
+        request, "Exito", text="Eliminado Correctamente", persistent="Aceptar"
+    )
 
-#     return redirect("listar_salas")
+    return redirect("listar_salas")
 
 
 
@@ -99,7 +99,6 @@ def delete_salas_all(request):
         ids_sala_delete = request.POST.getlist('ids_sala_delete')
         ids_sala_delete = list(map(int, ids_sala_delete))
         
-        print(type(ids_sala_delete))
         Sala.objects.filter(id__in=ids_sala_delete).delete()  
         sweetify.success(
         request, "Exito", text="Eliminado Correctamente", persistent="Aceptar"

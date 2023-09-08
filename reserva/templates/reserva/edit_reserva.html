@@ -1,4 +1,3 @@
-
 {% extends 'sala/base.html' %}
 {% load bootstrap5 %}
 {% load static %}
@@ -17,12 +16,10 @@
             </div>
             <tr>
               <td></td>
-
               <td>id</td>
               <td>Inicio</td>
               <td>Fin</td>
               <td>Sala</td>
-              <!-- <td>Usuario</td> -->
             </tr>
         </thead>
         <tbody>
@@ -33,17 +30,16 @@
                     <td>{{r.tiempo_inicio}}</td>
                     <td>{{r.tiempo_fin}}</td>
                     <td>{{r.sala_id.nombre}}</td>
-              <!-- <td>{{r.username.username}}</td> -->
-
                     <td>
                         <a href="" class="btn text-secondary px-0">
                             <img src="{% static 'icons/edit.svg' %}" alt="">
                         </a>
-                        <form action="{% url 'delete_reserva_all' %}" method="post" class="d-inline">
+                        <form action="{% url 'delete_reserva_all'  %}" method="post" class="d-inline">
                             {% csrf_token %}
-                                <a href="">
+                            <input type="hidden" name="id_reserva_individual" value="{{ r.id }}">
+                            <button type="submit" class="btn  btn-sm">
                                 <img src="{% static 'icons/trash-2.svg' %}" alt="">
-                                </a>
+                            </button>
                         </form>
                     </td>
                 </tr>
@@ -53,45 +49,24 @@
 
     <button type="submit" class="btn btn-danger float-right" onclick="return confirm('¿Estás seguro de que deseas eliminar todas las reservas seleccionadas?')">
         <img src="{% static 'icons/trash-all.svg' %}" alt="">
-
     </button>
 
 </form>
 
 <nav>
-    <ul class="pagination">
-    {% if page_object.has_previous %}
-      <li class="page-item"><a class="page-link" href="?page={{ page_object.previous_page_number }}">Previous</a></li>
-    {% endif %}
-      {% for page_num in page_object.paginator.page_range %}
-        {% if page_num == page_object.number %}
-            <li class="page-item"><a class="page-link" href="#">{{ page_num }}</a></li>
-        {% else %}
-            <li class="page-item"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
-        {% endif %}
-      {% endfor %}
+</nav>
 
-      {% if page_object.has_next %}
-
-      <li class="page-item"><a class="page-link" href="?page={{ page_object.next_page_number }}">Next</a></li>
-      {% endif %}
-
-    </ul>
-  </nav>
-
-  {% block scripts %}
-  <script>
+{% block scripts %}
+<script>
     const selectAllCheckbox = document.getElementById('seleccionar-todo');
     const checkboxes = document.getElementsByName('ids_reserva_delete');
 
     selectAllCheckbox.addEventListener('change', (event) => {
-      checkboxes.forEach((checkbox) => {
-        checkbox.checked = event.target.checked;
-      });
+        checkboxes.forEach((checkbox) => {
+            checkbox.checked = event.target.checked;
+        });
     });
-  </script>
+</script>
 {% endblock %}
-
-
 
 {% endblock content %}

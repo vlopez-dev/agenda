@@ -35,9 +35,10 @@
                         </a>
                         <form action="{% url 'delete_sala_all' %}" method="post" class="d-inline">
                             {% csrf_token %}
-                                <a href="">
+                            <input type="hidden" name="id_sala_individual" value="{{ r.id }}">
+                            <button type="submit" class="btn  btn-sm">
                                 <img src="{% static 'icons/trash-2.svg' %}" alt="">
-                                </a>
+                            </button>
                         </form>
                     </td>
                 </tr>
