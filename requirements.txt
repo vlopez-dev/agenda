@@ -1,5 +1,5 @@
 #Version django
-Django>=4.0.4 
+Django<=4.0.4 
 
 #django-colorfield
 django-colorfield>=0.7.2
