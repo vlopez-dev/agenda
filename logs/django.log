@@ -1276,3 +1276,91 @@ TypeError: strptime() argument 1 must be str, not datetime.datetime
 2023-09-11 20:35:21 [ERROR] agenda Otro error: [Errno 110] Connection timed out
 2023-09-11 20:38:23 [ERROR] agenda Otro error: [Errno 110] Connection timed out
 2023-09-11 20:43:33 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 12:39:01 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-12 12:39:01 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82541
+2023-09-12 12:44:00 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 13:57:26 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-12 13:57:26 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82643
+2023-09-12 14:03:44 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 14:05:19 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-12 14:05:19 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82643
+2023-09-12 14:06:04 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-12 14:06:04 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82643
+2023-09-12 14:55:24 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 14:57:35 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 14:58:01 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
+TypeError: send_email() missing 1 required positional argument: 'asunto'
+2023-09-12 14:58:01 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82637
+2023-09-12 15:02:06 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 15:04:48 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-12 15:04:48 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82637
+2023-09-12 15:06:03 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 86, in send_email
+    subject=asunto,
+NameError: name 'asunto' is not defined
+2023-09-12 15:06:03 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 87358
+2023-09-12 15:07:20 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-12 15:07:20 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82643
+2023-09-12 16:08:41 [ERROR] agenda Otro error: [Errno 110] Connection timed out

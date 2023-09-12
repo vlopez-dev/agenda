@@ -26,7 +26,7 @@ logger = logging.getLogger("agenda")
 Connected = False
 
 
-def add_reserva(request, id=0):
+def add_reserva(request,id=0):
     if request.method == "GET":
         if id == 0:
             form = ReservaForm()
@@ -58,9 +58,7 @@ def add_reserva(request, id=0):
                 reserva = form.save(commit=False)
                 reserva.username = request.user
                 reserva.save()
-                result_env = send_email(
-                    invitados, descripcion, salaid, iniciohora, finhora, request
-                )
+                result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
                 if result_env == None:
                     sweetify.error(
                         request,
@@ -79,7 +77,7 @@ def add_reserva(request, id=0):
         return redirect("/home/")
 
 
-def send_email(invitados, descripcion, salaid, iniciohora, finhora, asunto,request):
+def send_email(invitados, descripcion, salaid, iniciohora, finhora,asunto):
     sender_email = "web@vic.uy"
     recipient_list = invitados.split(";")
     logger.debug(EMAIL_HOST_USER)
@@ -163,16 +161,16 @@ def delete_reserva_all(request):
             print(cancelacion)
             if cancelacion == True:
                 reserva.delete()
-            else:
-                 sweetify.error(
-                    request, "Error", text="No se pudo enviar el correo de cancelación, pero igualmente se elimina del sistema", persistent="Aceptar"
-                    
+                sweetify.success(
+                    request, "Exito", text="Eliminado Correctamente", persistent="Aceptar"
                 )
-            reserva.delete()
+            else:
+                sweetify.error(
+                    request, "Error", text="No se pudo enviar el correo de cancelación, pero igualmente se elimina del sistema", persistent="Aceptar")
+                 
+                reserva.delete()
 
-        sweetify.success(
-            request, "Exito", text="Eliminado Correctamente", persistent="Aceptar"
-        )
+       
         return redirect("listar_reservas")
     else:
         reservas = Reserva.objects.all()
@@ -184,6 +182,6 @@ def delete_reserva_all(request):
 
 
 
-def envio_recordatorio(id_reserva):
-    subtwo = threading.Thread(target=envio_recordatorio)
-    subtwo.start()
+# def envio_recordatorio(id_reserva):
+#     subtwo = threading.Thread(target=envio_recordatorio)
+#     subtwo.start()
