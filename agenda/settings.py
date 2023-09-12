@@ -18,9 +18,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Obtiene el valor de la variable de entorno DATABASE_URL
-DB_AGENDA_TEST_NAME = os.getenv('DB_AGENDA_TEST_NAME')
-DB_AGENDA_TEST_USER = os.getenv('DB_AGENDA_TEST_USER')
-DB_AGENDA_TEST_PASSWORD = os.getenv('DB_AGENDA_TEST_PASSWORD')
+DB_AGENDA_NAME = os.getenv('DB_AGENDA_NAME')
+DB_AGENDA_USER = os.getenv('DB_AGENDA_USER')
+DB_AGENDA_PASSWORD = os.getenv('DB_AGENDA_PASSWORD')
 DB_HOST = os.getenv('DB_HOST')
 DB_PORT = os.getenv('DB_PORT')
 
@@ -112,9 +112,9 @@ WSGI_APPLICATION = "agenda.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME":DB_AGENDA_TEST_NAME,
-        "USER":DB_AGENDA_TEST_USER,
-        "PASSWORD":DB_AGENDA_TEST_PASSWORD,
+        "NAME":DB_AGENDA_NAME,
+        "USER":DB_AGENDA_USER,
+        "PASSWORD":DB_AGENDA_PASSWORD,
         "HOST":DB_HOST,
         "PORT":DB_PORT,
     }
@@ -156,7 +156,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join (BASE_DIR,'static/')
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join (BASE_DIR,'media/')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 SWEETIFY_SWEETALERT_LIBRARY = "sweetalert2"
