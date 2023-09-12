@@ -62,11 +62,7 @@ def add_reserva(request, id=0):
                     invitados, descripcion, salaid, iniciohora, finhora, request
                 )
                 if result_env == None:
-                    sweetify.error(
-                        request,
-                        "Error en el envio de mail, se realizo la reserva igualmente",
-                        persistent=":(",
-                    )
+                    sweetify.error(request, 'Error en el envio de mail, se realizo la reserva igualmente', persistent=":(")
 
                 else:
                     sweetify.success(
