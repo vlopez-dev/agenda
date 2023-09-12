@@ -98,14 +98,16 @@ def delete_salas_all(request):
     if request.method == 'POST':
         ids_sala_delete = request.POST.getlist('ids_sala_delete')
         ids_sala_delete = list(map(int, ids_sala_delete))
-        
-        Sala.objects.filter(id__in=ids_sala_delete).delete()  
-        sweetify.success(
-        request, "Exito", text="Eliminado Correctamente", persistent="Aceptar"
-     )
-        return redirect("listar_salas")
-        
-    else:
-        salas = Sala.objects.all()
-        return redirect("listar_salas",{'salas':salas})
+        print(ids_sala_delete)
+        if ids_sala_delete !=[] or None:
+            Sala.objects.filter(id__in=ids_sala_delete).delete()  
+            sweetify.success(
+            request, "Exito", text="Eliminado Correctamente", persistent="Aceptar")
+            return redirect("listar_salas")
+
+        else:
+            sweetify.error(
+                    request, "Error", text="Debe seleccionar al menos una sala", persistent="Aceptar")
+                 
+            return redirect("listar_salas")
 
