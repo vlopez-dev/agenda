@@ -73,7 +73,7 @@ def add_reserva(request,id=0):
         return redirect("/home/")
 
 
-def send_email(invitados, descripcion, salaid, iniciohora, finhora,asunto):
+def send_email(invitados, descripcion, salaid, iniciohora, finhora,asunto,request):
     sender_email = "web@vic.uy"
     recipient_list = invitados.split(";")
     logger.debug(EMAIL_HOST_USER)

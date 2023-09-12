@@ -1364,3 +1364,17 @@ Traceback (most recent call last):
 TypeError: send_email() missing 1 required positional argument: 'request'
 2023-09-12 15:07:20 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82643
 2023-09-12 16:08:41 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 18:49:06 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 156, in delete_reserva_all
+    cancelacion = send_email(invitados=reserva.invitados,descripcion=reserva.descripcion,salaid=reserva.sala_id.nombre,iniciohora=dateiniciohora,finhora=datefinhora,asunto="Reserva Cancelada",request=request)
+TypeError: send_email() got an unexpected keyword argument 'request'
+2023-09-12 18:49:06 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 80906
+2023-09-12 18:51:49 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 18:54:00 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 18:56:11 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 18:58:22 [ERROR] agenda Otro error: [Errno 110] Connection timed out
