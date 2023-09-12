@@ -58,13 +58,16 @@ def add_reserva(request,id=0):
                 reserva = form.save(commit=False)
                 reserva.username = request.user
                 reserva.save()
-                result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
+                result_env = send_email(
+                    invitados,
+                    descripcion,
+                    salaid,
+                    iniciohora,
+                    finhora,
+                    asunto="Reserva",
+                )
                 if result_env == None:
-                    sweetify.error(
-                        request,
-                        "Error en el envio de mail, se realizo la reserva igualmente",
-                        persistent=":(",
-                    )
+                    sweetify.error(request, 'Error en el envio de mail, se realizo la reserva igualmente', persistent=":(")
 
                 else:
                     sweetify.success(
@@ -77,7 +80,7 @@ def add_reserva(request,id=0):
         return redirect("/home/")
 
 
-def send_email(invitados, descripcion, salaid, iniciohora, finhora,asunto):
+def send_email(invitados, descripcion, salaid, iniciohora, finhora, asunto):
     sender_email = "web@vic.uy"
     recipient_list = invitados.split(";")
     logger.debug(EMAIL_HOST_USER)
@@ -113,11 +116,6 @@ def send_email(invitados, descripcion, salaid, iniciohora, finhora,asunto):
         email.get_connection().close()
 
 
-
-
-
-
-
 def verificar_estado(salaid, dateiniciohora, datefinhora):
     utc = pytz.UTC
     reservas = Reserva.objects.filter(
@@ -130,7 +128,9 @@ def verificar_estado(salaid, dateiniciohora, datefinhora):
 
 
 def listar_reservas(request):
-    reservas = Reserva.objects.select_related("sala_id", "username").order_by("tiempo_inicio")
+    reservas = Reserva.objects.select_related("sala_id", "username").order_by(
+        "tiempo_inicio"
+    )
 
     paginator = Paginator(reservas, 10)
     page_number = request.GET.get("page")
@@ -143,26 +143,40 @@ def listar_reservas(request):
     return render(request, "reserva/edit_reserva.html", context)
 
 
-
-
-
-
 def delete_reserva_all(request):
     if request.method == "POST":
         ids_reserva_delete = request.POST.getlist("ids_reserva_delete")
         ids_reserva_delete = list(map(int, ids_reserva_delete))
 
-        reservas=Reserva.objects.filter(id__in=ids_reserva_delete)
+        reservas = Reserva.objects.filter(id__in=ids_reserva_delete)
         for reserva in reservas:
-            dateiniciohora = datetime.strftime(reserva.tiempo_inicio, "%d/%m/%Y %H:%M:%S")
-            datefinhora =  datetime.strftime(reserva.tiempo_fin, "%d/%m/%Y %H:%M:%S")
+            dateiniciohora = datetime.strftime(
+                reserva.tiempo_inicio, "%d/%m/%Y %H:%M:%S"
+            )
+            datefinhora = datetime.strftime(reserva.tiempo_fin, "%d/%m/%Y %H:%M:%S")
 
-            cancelacion = send_email(invitados=reserva.invitados,descripcion=reserva.descripcion,salaid=reserva.sala_id.nombre,iniciohora=dateiniciohora,finhora=datefinhora,asunto="Reserva Cancelada",request=request)
-            print(cancelacion)
+            cancelacion = send_email(
+                invitados=reserva.invitados,
+                descripcion=reserva.descripcion,
+                salaid=reserva.sala_id.nombre,
+                iniciohora=dateiniciohora,
+                finhora=datefinhora,
+                asunto="Reserva Cancelada",
+            )
+
             if cancelacion == True:
-                reserva.delete()
                 sweetify.success(
-                    request, "Exito", text="Eliminado Correctamente", persistent="Aceptar"
+                    request,
+                    "Exito",
+                    text="Eliminado Correctamente",
+                    persistent="Aceptar",
+                )
+                reserva.delete()
+            else:
+                sweetify.error(
+                    request,
+                    "Error en el envio de mail, se realizo la cancelacion de  la reserva igualmente",
+                    persistent=":(",
                 )
             else:
                 sweetify.error(
@@ -170,18 +184,12 @@ def delete_reserva_all(request):
                  
                 reserva.delete()
 
-       
         return redirect("listar_reservas")
     else:
         reservas = Reserva.objects.all()
         return redirect("listar_reservas", {"reservas": reservas})
 
 
-
-
-
-
-
-# def envio_recordatorio(id_reserva):
-#     subtwo = threading.Thread(target=envio_recordatorio)
-#     subtwo.start()
+def envio_recordatorio(id_reserva):
+    subtwo = threading.Thread(target=envio_recordatorio)
+    subtwo.start()

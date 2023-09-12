@@ -1276,91 +1276,69 @@ TypeError: strptime() argument 1 must be str, not datetime.datetime
 2023-09-11 20:35:21 [ERROR] agenda Otro error: [Errno 110] Connection timed out
 2023-09-11 20:38:23 [ERROR] agenda Otro error: [Errno 110] Connection timed out
 2023-09-11 20:43:33 [ERROR] agenda Otro error: [Errno 110] Connection timed out
-2023-09-12 12:39:01 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+2023-09-12 00:54:02 [ERROR] django.request Internal Server Error: /reserva/addreserva/
 Traceback (most recent call last):
-  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
     response = get_response(request)
-  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 61, in add_reserva
     result_env = send_email(
 TypeError: send_email() missing 1 required positional argument: 'request'
-2023-09-12 12:39:01 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82541
-2023-09-12 12:44:00 [ERROR] agenda Otro error: [Errno 110] Connection timed out
-2023-09-12 13:57:26 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+2023-09-12 00:54:02 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 81987
+2023-09-12 00:55:25 [ERROR] django.request Internal Server Error: /reserva/addreserva/
 Traceback (most recent call last):
-  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
     response = get_response(request)
-  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 61, in add_reserva
     result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
 TypeError: send_email() missing 1 required positional argument: 'request'
-2023-09-12 13:57:26 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82643
-2023-09-12 14:03:44 [ERROR] agenda Otro error: [Errno 110] Connection timed out
-2023-09-12 14:05:19 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+2023-09-12 00:55:25 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82079
+2023-09-12 00:55:54 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
 Traceback (most recent call last):
-  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
     response = get_response(request)
-  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
-    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
-TypeError: send_email() missing 1 required positional argument: 'request'
-2023-09-12 14:05:19 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82643
-2023-09-12 14:06:04 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 160, in delete_reserva_all
+    cancelacion = send_email(invitados=reserva.invitados,descripcion=reserva.descripcion,salaid=reserva.sala_id.nombre,iniciohora=dateiniciohora,finhora=datefinhora,asunto="Reserva Cancelada",request=request)
+TypeError: send_email() got an unexpected keyword argument 'request'
+2023-09-12 00:55:54 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 80383
+2023-09-12 00:56:32 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-12 00:56:49 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-12 00:57:07 [ERROR] django.request Internal Server Error: /reserva/addreserva/
 Traceback (most recent call last):
-  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
     response = get_response(request)
-  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
-    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
-TypeError: send_email() missing 1 required positional argument: 'request'
-2023-09-12 14:06:04 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82643
-2023-09-12 14:55:24 [ERROR] agenda Otro error: [Errno 110] Connection timed out
-2023-09-12 14:57:35 [ERROR] agenda Otro error: [Errno 110] Connection timed out
-2023-09-12 14:58:01 [ERROR] django.request Internal Server Error: /reserva/addreserva/
-Traceback (most recent call last):
-  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
-    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora)
 TypeError: send_email() missing 1 required positional argument: 'asunto'
-2023-09-12 14:58:01 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82637
-2023-09-12 15:02:06 [ERROR] agenda Otro error: [Errno 110] Connection timed out
-2023-09-12 15:04:48 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+2023-09-12 00:57:07 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82057
+2023-09-12 00:58:33 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-12 00:58:50 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-12 01:02:20 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-12 01:03:17 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-12 01:03:29 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-12 01:03:29 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
 Traceback (most recent call last):
-  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
     response = get_response(request)
-  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
-    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
-TypeError: send_email() missing 1 required positional argument: 'request'
-2023-09-12 15:04:48 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82637
-2023-09-12 15:06:03 [ERROR] django.request Internal Server Error: /reserva/addreserva/
-Traceback (most recent call last):
-  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
-    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
-  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 86, in send_email
-    subject=asunto,
-NameError: name 'asunto' is not defined
-2023-09-12 15:06:03 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 87358
-2023-09-12 15:07:20 [ERROR] django.request Internal Server Error: /reserva/addreserva/
-Traceback (most recent call last):
-  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
-    response = get_response(request)
-  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
-    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
-TypeError: send_email() missing 1 required positional argument: 'request'
-2023-09-12 15:07:20 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82643
-2023-09-12 16:08:41 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 171, in delete_reserva_all
+    reserva.delete()
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/db/models/base.py", line 1130, in delete
+    raise ValueError(
+ValueError: Reserva object can't be deleted because its id attribute is set to None.
+2023-09-12 01:03:29 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 84325
+2023-09-12 01:05:16 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-12 01:05:28 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-12 01:06:14 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-12 01:06:50 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-12 01:07:11 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-12 01:07:15 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-12 01:11:21 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')

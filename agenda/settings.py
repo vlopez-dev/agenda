@@ -16,11 +16,12 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
+DEBUG = os.getenv('DEBUG')
 
 # Obtiene el valor de la variable de entorno DATABASE_URL
-DB_AGENDA_TEST_NAME = os.getenv('DB_AGENDA_TEST_NAME')
-DB_AGENDA_TEST_USER = os.getenv('DB_AGENDA_TEST_USER')
-DB_AGENDA_TEST_PASSWORD = os.getenv('DB_AGENDA_TEST_PASSWORD')
+DB_AGENDA_NAME = os.getenv('DB_AGENDA_NAME')
+DB_AGENDA_USER = os.getenv('DB_AGENDA_USER')
+DB_AGENDA_PASSWORD = os.getenv('DB_AGENDA_PASSWORD')
 DB_HOST = os.getenv('DB_HOST')
 DB_PORT = os.getenv('DB_PORT')
 
@@ -33,6 +34,7 @@ EMAIL_HOST_PASSWORD=os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS=os.getenv('EMAIL_USE_TLS')
 EMAIL_USE_SSL=os.getenv('EMAIL_USE_SSL')
 
+print(EMAIL_HOST_USER)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,12 +44,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-9!_ppv9@8+h0+f)4cx1lv%hel=f&bm%^ngj9hu)jv0-^4nqe4h"
+SECRET_KEY = "@d@1%i-r*1&2#$vfddnod9rbox55*8==5j5ig65xz-&ui&u8_@"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','agenda.vic.uy']
+ALLOWED_HOSTS = ['agenda.vic.uy','127.0.0.1']
 
 
 # Application definition
@@ -109,12 +111,23 @@ WSGI_APPLICATION = "agenda.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
+
+
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME":DB_AGENDA_TEST_NAME,
-        "USER":DB_AGENDA_TEST_USER,
-        "PASSWORD":DB_AGENDA_TEST_PASSWORD,
+        "NAME":DB_AGENDA_NAME,
+        "USER":DB_AGENDA_USER,
+        "PASSWORD":DB_AGENDA_PASSWORD,
         "HOST":DB_HOST,
         "PORT":DB_PORT,
     }
@@ -156,7 +169,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join (BASE_DIR,'static/')
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join (BASE_DIR,'media/')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 SWEETIFY_SWEETALERT_LIBRARY = "sweetalert2"
