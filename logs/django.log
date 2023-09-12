@@ -658,3 +658,709 @@ Traceback (most recent call last):
     raise FieldError(
 django.core.exceptions.FieldError: Non-relational field given in select_related: 'id'. Choices are: (none)
 2023-09-08 17:06:19 [ERROR] django.server "GET /listarsalas/ HTTP/1.1" 500 219033
+2023-09-08 17:33:11 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 53, in add_reserva
+    estadosala = verificar_estado(salaid, dateiniciohora, datefinhora)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'str' object has no attribute 'user'
+2023-09-08 17:33:11 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 92021
+2023-09-08 17:46:27 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 53, in add_reserva
+    estadosala = verificar_estado(salaid, dateiniciohora, datefinhora)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'str' object has no attribute 'user'
+2023-09-08 17:46:27 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 92021
+2023-09-08 19:34:23 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 53, in add_reserva
+    estadosala = verificar_estado(salaid, dateiniciohora, datefinhora)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'str' object has no attribute 'user'
+2023-09-08 19:34:23 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 92020
+2023-09-08 19:34:38 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 52, in add_reserva
+    estadosala = verificar_estado(salaid, dateiniciohora, datefinhora)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'str' object has no attribute 'user'
+2023-09-08 19:34:38 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 86997
+2023-09-08 19:35:03 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 52, in add_reserva
+    estadosala = verificar_estado(salaid, dateiniciohora, datefinhora)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'str' object has no attribute 'user'
+2023-09-08 19:35:03 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 86994
+2023-09-08 19:38:03 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-11 13:01:14 [ERROR] django.request Internal Server Error: /admin/auth/user/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/options.py", line 686, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/utils/decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/views/decorators/cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/utils/decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/options.py", line 1964, in changelist_view
+    response = self.response_action(
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/options.py", line 1593, in response_action
+    response = func(self, request, queryset)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/actions.py", line 39, in delete_selected
+    ) = modeladmin.get_deleted_objects(queryset, request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/options.py", line 2104, in get_deleted_objects
+    return get_deleted_objects(objs, request, self.admin_site)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 153, in get_deleted_objects
+    to_delete = collector.nested(format_callback)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 220, in nested
+    roots.extend(self._nested(root, seen, format_callback))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 204, in _nested
+    children.extend(self._nested(child, seen, format_callback))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 206, in _nested
+    ret = [format_callback(obj)]
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 128, in format_callback
+    no_edit_link = "%s: %s" % (capfirst(opts.verbose_name), obj)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/models.py", line 35, in __str__
+    return self.name
+AttributeError: 'Reserva' object has no attribute 'name'
+2023-09-11 13:01:14 [ERROR] django.server "POST /admin/auth/user/ HTTP/1.1" 500 156127
+2023-09-11 13:02:19 [ERROR] django.request Internal Server Error: /admin/reserva/reserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/db/models/options.py", line 668, in get_field
+    return self.fields_map[field_name]
+KeyError: '__str__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 271, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 302, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/db/models/options.py", line 670, in get_field
+    raise FieldDoesNotExist(
+django.core.exceptions.FieldDoesNotExist: Reserva has no field named '__str__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/templatetags/base.py", line 45, in render
+    return super().render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/library.py", line 258, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/templatetags/admin_list.py", line 336, in result_list
+    "results": list(results(cl)),
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/templatetags/admin_list.py", line 312, in results
+    yield ResultList(None, items_for_result(cl, res, None))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/templatetags/admin_list.py", line 303, in __init__
+    super().__init__(*items)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/templatetags/admin_list.py", line 213, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 284, in lookup_field
+    value = attr()
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/models.py", line 35, in __str__
+    return self.name
+AttributeError: 'Reserva' object has no attribute 'name'
+2023-09-11 13:02:19 [ERROR] django.server "GET /admin/reserva/reserva/ HTTP/1.1" 500 381296
+2023-09-11 13:02:24 [ERROR] django.request Internal Server Error: /admin/reserva/reserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/db/models/options.py", line 668, in get_field
+    return self.fields_map[field_name]
+KeyError: '__str__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 271, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 302, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/db/models/options.py", line 670, in get_field
+    raise FieldDoesNotExist(
+django.core.exceptions.FieldDoesNotExist: Reserva has no field named '__str__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/templatetags/base.py", line 45, in render
+    return super().render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/library.py", line 258, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/templatetags/admin_list.py", line 336, in result_list
+    "results": list(results(cl)),
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/templatetags/admin_list.py", line 312, in results
+    yield ResultList(None, items_for_result(cl, res, None))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/templatetags/admin_list.py", line 303, in __init__
+    super().__init__(*items)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/templatetags/admin_list.py", line 213, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 284, in lookup_field
+    value = attr()
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/models.py", line 35, in __str__
+    return self.name
+AttributeError: 'Reserva' object has no attribute 'name'
+2023-09-11 13:02:24 [ERROR] django.server "GET /admin/reserva/reserva/ HTTP/1.1" 500 381290
+2023-09-11 13:02:30 [ERROR] django.request Internal Server Error: /admin/reserva/reserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/db/models/options.py", line 668, in get_field
+    return self.fields_map[field_name]
+KeyError: '__str__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 271, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 302, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/db/models/options.py", line 670, in get_field
+    raise FieldDoesNotExist(
+django.core.exceptions.FieldDoesNotExist: Reserva has no field named '__str__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/templatetags/base.py", line 45, in render
+    return super().render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/library.py", line 258, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/templatetags/admin_list.py", line 336, in result_list
+    "results": list(results(cl)),
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/templatetags/admin_list.py", line 312, in results
+    yield ResultList(None, items_for_result(cl, res, None))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/templatetags/admin_list.py", line 303, in __init__
+    super().__init__(*items)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/templatetags/admin_list.py", line 213, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/admin/utils.py", line 284, in lookup_field
+    value = attr()
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/models.py", line 35, in __str__
+    return self.name
+AttributeError: 'Reserva' object has no attribute 'name'
+2023-09-11 13:02:30 [ERROR] django.server "GET /admin/reserva/reserva/ HTTP/1.1" 500 381290
+2023-09-11 14:53:55 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 88, in send_email
+    subject=asunto,
+NameError: name 'asunto' is not defined
+2023-09-11 14:53:55 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 87275
+2023-09-11 14:55:36 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-11 14:55:36 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82547
+2023-09-11 17:29:23 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-11 17:29:23 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82545
+2023-09-11 18:23:28 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-11 18:32:55 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-11 18:42:44 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-11 18:42:44 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82549
+2023-09-11 18:43:50 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-11 18:43:50 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82549
+2023-09-11 18:48:29 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-11 18:48:29 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82549
+2023-09-11 18:51:11 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-11 18:51:11 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82541
+2023-09-11 18:51:17 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 167, in delete_reserva_all
+    cancelacio = send_email(invitados=reserva.invitados,salaid=reserva.sala_id,iniciohora=reserva.tiempo_inicio,finhora=reserva.tiempo_fin,asunto="Reserva Cancelada")
+AttributeError: 'QuerySet' object has no attribute 'invitados'
+2023-09-11 18:51:17 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 80100
+2023-09-11 18:52:18 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 167, in delete_reserva_all
+    cancelacio = send_email(reserva.invitados,reserva.sala_id,reserva.tiempo_inicio,reserva.tiempo_fin,asunto="Reserva Cancelada")
+AttributeError: 'QuerySet' object has no attribute 'invitados'
+2023-09-11 18:52:18 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 80028
+2023-09-11 20:17:48 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 169, in delete_reserva_all
+    cancelacion = send_email(reserva.invitados,reserva.sala_id,reserva.tiempo_inicio,reserva.tiempo_fin,asunto="Reserva Cancelada")
+TypeError: send_email() missing 2 required positional arguments: 'finhora' and 'request'
+2023-09-11 20:17:48 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 80420
+2023-09-11 20:19:14 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 169, in delete_reserva_all
+    cancelacion = send_email(invitados=reserva.invitados,salaid=reserva.sala_id,iniciohora=reserva.tiempo_inicio,finhora=reserva.tiempo_fin,asunto="Reserva Cancelada")
+TypeError: send_email() missing 2 required positional arguments: 'descripcion' and 'request'
+2023-09-11 20:19:14 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 80508
+2023-09-11 20:19:51 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 169, in delete_reserva_all
+    cancelacion = send_email(invitados=reserva.invitados,descripcion=reserva.descripcion,salaid=reserva.sala_id,iniciohora=reserva.tiempo_inicio,finhora=reserva.tiempo_fin,asunto="Reserva Cancelada",request=request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 89, in send_email
+    body=f"Se realizo una reserva de la sala "
+TypeError: can only concatenate str (not "Sala") to str
+2023-09-11 20:19:51 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 85622
+2023-09-11 20:21:01 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 169, in delete_reserva_all
+    cancelacion = send_email(invitados=reserva.invitados,descripcion=reserva.descripcion,salaid=reserva.sala_id,iniciohora=reserva.tiempo_inicio,finhora=reserva.tiempo_fin,asunto="Reserva Cancelada",request=request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 89, in send_email
+    body=f"Se realizo una reserva de la sala "
+TypeError: can only concatenate str (not "Sala") to str
+2023-09-11 20:21:01 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 85644
+2023-09-11 20:21:29 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 169, in delete_reserva_all
+    cancelacion = send_email(invitados=reserva.invitados,descripcion=reserva.descripcion,salaid=reserva.sala_id.id,iniciohora=reserva.tiempo_inicio,finhora=reserva.tiempo_fin,asunto="Reserva Cancelada",request=request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 89, in send_email
+    body=f"Se realizo una reserva de la sala "
+TypeError: can only concatenate str (not "int") to str
+2023-09-11 20:21:29 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 85630
+2023-09-11 20:21:45 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 169, in delete_reserva_all
+    cancelacion = send_email(invitados=reserva.invitados,descripcion=reserva.descripcion,salaid=reserva.sala_id,iniciohora=reserva.tiempo_inicio,finhora=reserva.tiempo_fin,asunto="Reserva Cancelada",request=request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 89, in send_email
+    body=f"Se realizo una reserva de la sala "
+TypeError: can only concatenate str (not "Sala") to str
+2023-09-11 20:21:45 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 85644
+2023-09-11 20:23:20 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 169, in delete_reserva_all
+    cancelacion = send_email(invitados=reserva.invitados,descripcion=reserva.descripcion,salaid=reserva.sala_id.nombre,iniciohora=reserva.tiempo_inicio,finhora=reserva.tiempo_fin,asunto="Reserva Cancelada",request=request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 89, in send_email
+    body=f"Se realizo una reserva de la sala "
+TypeError: can only concatenate str (not "datetime.datetime") to str
+2023-09-11 20:23:20 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 85708
+2023-09-11 20:25:25 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 158, in delete_reserva_all
+    cancelacion = send_email(invitados=reserva.invitados,descripcion=reserva.descripcion,salaid=reserva.sala_id.nombre,iniciohora=reserva.tiempo_inicio,finhora=reserva.tiempo_fin,asunto="Reserva Cancelada",request=request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 89, in send_email
+    body=f"Se realizo una reserva de la sala "
+TypeError: can only concatenate str (not "datetime.datetime") to str
+2023-09-11 20:25:25 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 85720
+2023-09-11 20:28:31 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 157, in delete_reserva_all
+    dateiniciohora = datetime.strptime(reserva.tiempo_inicio, "%d/%m/%Y %H:%M:%S")
+TypeError: strptime() argument 1 must be str, not datetime.datetime
+2023-09-11 20:28:31 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 80339
+2023-09-11 20:30:09 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 157, in delete_reserva_all
+    dateiniciohora = datetime.strptime(reserva.tiempo_inicio, "%d/%m/%Y %H:%M:%S")
+TypeError: strptime() argument 1 must be str, not datetime.datetime
+2023-09-11 20:30:09 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 80310
+2023-09-11 20:31:41 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 157, in delete_reserva_all
+    print(tyoe(reserva.tiempo_inicio))
+NameError: name 'tyoe' is not defined
+2023-09-11 20:31:41 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 80205
+2023-09-11 20:32:03 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 158, in delete_reserva_all
+    dateiniciohora = datetime.strptime(reserva.tiempo_inicio, "%d/%m/%Y %H:%M:%S")
+TypeError: strptime() argument 1 must be str, not datetime.datetime
+2023-09-11 20:32:03 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 80324
+2023-09-11 20:35:21 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-11 20:38:23 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-11 20:43:33 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 12:39:01 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-12 12:39:01 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82541
+2023-09-12 12:44:00 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 13:57:26 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-12 13:57:26 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82643
+2023-09-12 14:03:44 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 14:05:19 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-12 14:05:19 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82643
+2023-09-12 14:06:04 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-12 14:06:04 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82643
+2023-09-12 14:55:24 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 14:57:35 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 14:58:01 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
+TypeError: send_email() missing 1 required positional argument: 'asunto'
+2023-09-12 14:58:01 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82637
+2023-09-12 15:02:06 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 15:04:48 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-12 15:04:48 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82637
+2023-09-12 15:06:03 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 86, in send_email
+    subject=asunto,
+NameError: name 'asunto' is not defined
+2023-09-12 15:06:03 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 87358
+2023-09-12 15:07:20 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-12 15:07:20 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82643
+2023-09-12 16:08:41 [ERROR] agenda Otro error: [Errno 110] Connection timed out

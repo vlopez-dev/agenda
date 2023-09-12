@@ -26,7 +26,7 @@ logger = logging.getLogger("agenda")
 Connected = False
 
 
-def add_reserva(request, id=0):
+def add_reserva(request,id=0):
     if request.method == "GET":
         if id == 0:
             form = ReservaForm()
@@ -58,9 +58,7 @@ def add_reserva(request, id=0):
                 reserva = form.save(commit=False)
                 reserva.username = request.user
                 reserva.save()
-                result_env = send_email(
-                    invitados, descripcion, salaid, iniciohora, finhora, request
-                )
+                result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
                 if result_env == None:
                     sweetify.error(request, 'Error en el envio de mail, se realizo la reserva igualmente', persistent=":(")
 
@@ -75,13 +73,13 @@ def add_reserva(request, id=0):
         return redirect("/home/")
 
 
-def send_email(invitados, descripcion, salaid, iniciohora, finhora, request):
+def send_email(invitados, descripcion, salaid, iniciohora, finhora,asunto):
     sender_email = "web@vic.uy"
     recipient_list = invitados.split(";")
     logger.debug(EMAIL_HOST_USER)
 
     email = EmailMessage(
-        subject="Correo desde Web",
+        subject=asunto,
         body=f"Se realizo una reserva de la sala "
         + salaid
         + "para el evento "
@@ -101,9 +99,11 @@ def send_email(invitados, descripcion, salaid, iniciohora, finhora, request):
 
     except SMTPAuthenticationError as auth_error:
         logger.error(f"Error de autenticación SMTP: {str(auth_error)}")
+        return None
 
     except Exception as e:
         logger.error(f"Otro error: {str(e)}")
+        return None
 
     finally:
         email.get_connection().close()
@@ -138,13 +138,6 @@ def listar_reservas(request):
 
     return render(request, "reserva/edit_reserva.html", context)
 
-def delete_reserva(request,id):
-    logger.debug(id)
-    reserva = Reserva.objects.get(pk=id)
-    reserva.delete()
-    return redirect("listar_reservas")
-
-
 
 
 
@@ -155,10 +148,25 @@ def delete_reserva_all(request):
         ids_reserva_delete = request.POST.getlist("ids_reserva_delete")
         ids_reserva_delete = list(map(int, ids_reserva_delete))
 
-        Reserva.objects.filter(id__in=ids_reserva_delete).delete()
-        sweetify.success(
-            request, "Exito", text="Eliminado Correctamente", persistent="Aceptar"
-        )
+        reservas=Reserva.objects.filter(id__in=ids_reserva_delete)
+        for reserva in reservas:
+            dateiniciohora = datetime.strftime(reserva.tiempo_inicio, "%d/%m/%Y %H:%M:%S")
+            datefinhora =  datetime.strftime(reserva.tiempo_fin, "%d/%m/%Y %H:%M:%S")
+
+            cancelacion = send_email(invitados=reserva.invitados,descripcion=reserva.descripcion,salaid=reserva.sala_id.nombre,iniciohora=dateiniciohora,finhora=datefinhora,asunto="Reserva Cancelada",request=request)
+            print(cancelacion)
+            if cancelacion == True:
+                reserva.delete()
+                sweetify.success(
+                    request, "Exito", text="Eliminado Correctamente", persistent="Aceptar"
+                )
+            else:
+                sweetify.error(
+                    request, "Error", text="No se pudo enviar el correo de cancelación, pero igualmente se elimina del sistema", persistent="Aceptar")
+                 
+                reserva.delete()
+
+       
         return redirect("listar_reservas")
     else:
         reservas = Reserva.objects.all()
@@ -170,6 +178,6 @@ def delete_reserva_all(request):
 
 
 
-def envio_recordatorio(id_reserva):
-    subtwo = threading.Thread(target=envio_recordatorio)
-    subtwo.start()
+# def envio_recordatorio(id_reserva):
+#     subtwo = threading.Thread(target=envio_recordatorio)
+#     subtwo.start()
