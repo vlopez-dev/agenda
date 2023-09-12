@@ -173,15 +173,8 @@ def delete_reserva_all(request):
                 )
                 reserva.delete()
             else:
-                sweetify.error(
-                    request,
-                    "Error en el envio de mail, se realizo la cancelacion de  la reserva igualmente",
-                    persistent=":(",
-                )
-            else:
-                sweetify.error(
-                    request, "Error", text="No se pudo enviar el correo de cancelación, pero igualmente se elimina del sistema", persistent="Aceptar")
-                 
+         
+                sweetify.error(request, "Error", text="No se pudo enviar el correo de cancelación, pero igualmente se elimina del sistema", persistent="Aceptar")   
                 reserva.delete()
 
         return redirect("listar_reservas")
