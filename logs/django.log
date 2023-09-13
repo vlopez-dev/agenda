@@ -1540,3 +1540,5 @@ Traceback (most recent call last):
     raise ValueError(
 ValueError: The view reserva.views.delete_reserva_all didn't return an HttpResponse object. It returned None instead.
 2023-09-12 20:53:57 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 80215
+2023-09-13 01:10:43 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-13 01:11:03 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
