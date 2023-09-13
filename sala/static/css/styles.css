@@ -16,21 +16,30 @@
     margin: 40px auto;
     z-index: 0;
   }
+ 
 
+  .btn-group-vertical>.btn.active,
+.btn-group-vertical>.btn:active,
+.btn-group-vertical>.btn:focus,
+.btn-group>.btn.active,
+.btn-group>.btn:active,
+.btn-group>.btn:focus {
+    z-index: 0 !important;
+}
+
+
+  
   @media (max-width: 767.98px) {
     .fc .fc-toolbar.fc-header-toolbar {
         display: block;
         text-align: center;
+        z-index: 0;
     }
 
     .fc-header-toolbar .fc-toolbar-chunk {
         display: block;
     }
 }
-
-
-
-
 
 
 
