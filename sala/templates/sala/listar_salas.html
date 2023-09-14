@@ -30,7 +30,7 @@
                     <td>{{r.nombre}}</td>
                     <td>{{r.ubicacion}}</td>
                     <td>
-                        <a href="" class="btn text-secondary px-0">
+                        <a href="{% url 'editar_sala' r.id %}" class="btn text-secondary px-0">
                             <img src="{% static 'icons/edit.svg' %}" alt="">
                         </a>
                         <form action="{% url 'delete_sala_all' %}" method="post" class="d-inline">

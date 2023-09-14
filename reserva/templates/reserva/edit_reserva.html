@@ -31,7 +31,7 @@
                     <td>{{r.tiempo_fin}}</td>
                     <td>{{r.sala_id.nombre}}</td>
                     <td>
-                        <a href="" class="btn text-secondary px-0">
+                        <a href="{% url 'editar_reserva' r.id %}" class="btn text-secondary px-0">
                             <img src="{% static 'icons/edit.svg' %}" alt="">
                         </a>
                         <form action="{% url 'delete_reserva_all'  %}" method="post" class="d-inline">

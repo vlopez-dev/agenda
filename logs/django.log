@@ -1540,3 +1540,143 @@ Traceback (most recent call last):
     raise ValueError(
 ValueError: The view reserva.views.delete_reserva_all didn't return an HttpResponse object. It returned None instead.
 2023-09-12 20:53:57 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 80215
+2023-09-14 20:14:52 [ERROR] django.request Internal Server Error: /editar_sala/542/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/sala/views.py", line 57, in editar_sala
+    return render(request, "sala/editar_sala.html", {"form": form})
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: sala/editar_sala.html
+2023-09-14 20:14:52 [ERROR] django.server "GET /editar_sala/542/ HTTP/1.1" 500 97480
+2023-09-14 20:18:51 [ERROR] django.request Internal Server Error: /reserva/listarreservas/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 138, in listar_reservas
+    return render(request, "reserva/edit_reserva.html", context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/defaulttags.py", line 472, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'editar_reserva' not found. 'editar_reserva' is not a valid view function or pattern name.
+2023-09-14 20:18:51 [ERROR] django.server "GET /reserva/listarreservas/ HTTP/1.1" 500 191933
+2023-09-14 20:19:40 [ERROR] django.request Internal Server Error: /reserva/listarreservas/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 138, in listar_reservas
+    return render(request, "reserva/edit_reserva.html", context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/defaulttags.py", line 472, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'editar_reserva' not found. 'editar_reserva' is not a valid view function or pattern name.
+2023-09-14 20:19:40 [ERROR] django.server "GET /reserva/listarreservas/ HTTP/1.1" 500 191796
+2023-09-14 20:20:23 [ERROR] django.request Internal Server Error: /reserva/editar_reserva/341/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 187, in editar_reserva
+    return render(request, "sala/add_reserva.html", {"form": form})
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: sala/add_reserva.html
+2023-09-14 20:20:23 [ERROR] django.server "GET /reserva/editar_reserva/341/ HTTP/1.1" 500 98023

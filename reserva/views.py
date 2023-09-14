@@ -180,7 +180,20 @@ def delete_reserva_all(request):
             return redirect("listar_reservas", {"reservas": reservas})
 
 
-
+def editar_reserva(request, id):
+    reserva = Reserva.objects.get(pk=id)
+    if request.method == "GET":
+        form = ReservaForm(instance=reserva)
+        return render(request, "reserva/add_reserva.html", {"form": form})
+    else:
+        form = ReservaForm(request.POST, instance=reserva)
+        if form.is_valid():
+            form.save()
+            sweetify.success(
+                request, "Exito", text="Editado Correctamente", persistent="Aceptar"
+            )
+        return redirect("/home/")
+    
 
 
 
