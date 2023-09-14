@@ -8,7 +8,7 @@ urlpatterns = [
     path("listarreservas/", views.listar_reservas, name="listar_reservas"),
     path("<int:id>/", views.add_reserva, name="reserva_update"),
     path("delete_reserva_all/", views.delete_reserva_all, name="delete_reserva_all"),
-    # path ('delete_reserva/<int:id>/',views.delete_reserva,name='delete_reserva'),
+    path ('editar_reserva/<int:id>/',views.editar_reserva,name='editar_reserva'),
 
     
 ]

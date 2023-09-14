@@ -10,7 +10,6 @@ urlpatterns = [
     path("addsala/", views.add_sala, name="add_sala"),
     path("listarsalas/", views.listar_salas, name="listar_salas"),
     path("delete_sala_all/", views.delete_salas_all, name="delete_sala_all"),
-    path ('delete_sala/<int:id>/',views.delete_sala,name='delte_sala'),
+    path ('editar_sala/<int:id>/',views.editar_sala,name='editar_sala'),
 
-    
 ]

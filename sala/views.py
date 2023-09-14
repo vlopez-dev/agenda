@@ -47,6 +47,26 @@ def add_sala(request, id=0):
         return redirect("/home/")
 
 
+
+
+def editar_sala(request, id):
+    print(id)
+    sala = Sala.objects.get(pk=id)
+    if request.method == "GET":
+        form = SalaForm(instance=sala)
+        return render(request, "sala/add_sala.html", {"form": form})
+    else:
+        form = SalaForm(request.POST, instance=sala)
+        if form.is_valid():
+            form.save()
+            sweetify.success(
+                request, "Exito", text="Editado Correctamente", persistent="Aceptar"
+            )
+        return redirect("/home/")
+    
+    
+    
+    
 @login_required
 def listar_salas(request):
     """
@@ -68,6 +88,8 @@ def listar_salas(request):
     }
     
     return render(request, "sala/listar_salas.html", context)
+
+
 
 
 @login_required
@@ -98,14 +120,16 @@ def delete_salas_all(request):
     if request.method == 'POST':
         ids_sala_delete = request.POST.getlist('ids_sala_delete')
         ids_sala_delete = list(map(int, ids_sala_delete))
-        
-        Sala.objects.filter(id__in=ids_sala_delete).delete()  
-        sweetify.success(
-        request, "Exito", text="Eliminado Correctamente", persistent="Aceptar"
-     )
-        return redirect("listar_salas")
-        
-    else:
-        salas = Sala.objects.all()
-        return redirect("listar_salas",{'salas':salas})
+        print(ids_sala_delete)
+        if ids_sala_delete !=[] or None:
+            Sala.objects.filter(id__in=ids_sala_delete).delete()  
+            sweetify.success(
+            request, "Exito", text="Eliminado Correctamente", persistent="Aceptar")
+            return redirect("listar_salas")
+
+        else:
+            sweetify.error(
+                    request, "Error", text="Debe seleccionar al menos una sala", persistent="Aceptar")
+                 
+            return redirect("listar_salas")
 
