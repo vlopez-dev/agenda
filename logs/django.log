@@ -1364,3 +1364,181 @@ Traceback (most recent call last):
 TypeError: send_email() missing 1 required positional argument: 'request'
 2023-09-12 15:07:20 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82643
 2023-09-12 16:08:41 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 18:49:06 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 156, in delete_reserva_all
+    cancelacion = send_email(invitados=reserva.invitados,descripcion=reserva.descripcion,salaid=reserva.sala_id.nombre,iniciohora=dateiniciohora,finhora=datefinhora,asunto="Reserva Cancelada",request=request)
+TypeError: send_email() got an unexpected keyword argument 'request'
+2023-09-12 18:49:06 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 80906
+2023-09-12 18:51:49 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 18:54:00 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 18:56:11 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 18:58:22 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 19:57:02 [ERROR] django.request Internal Server Error: /delete_sala_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view sala.views.delete_salas_all didn't return an HttpResponse object. It returned None instead.
+2023-09-12 19:57:02 [ERROR] django.server "POST /delete_sala_all/ HTTP/1.1" 500 80204
+2023-09-12 19:58:50 [ERROR] django.request Internal Server Error: /delete_sala_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view sala.views.delete_salas_all didn't return an HttpResponse object. It returned None instead.
+2023-09-12 19:58:50 [ERROR] django.server "POST /delete_sala_all/ HTTP/1.1" 500 80204
+2023-09-12 19:59:42 [ERROR] django.request Internal Server Error: /delete_sala_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view sala.views.delete_salas_all didn't return an HttpResponse object. It returned None instead.
+2023-09-12 19:59:42 [ERROR] django.server "POST /delete_sala_all/ HTTP/1.1" 500 80066
+2023-09-12 20:00:18 [ERROR] django.request Internal Server Error: /delete_sala_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/utils/deprecation.py", line 138, in __call__
+    response = self.process_response(request, response)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/middleware/clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+AttributeError: 'str' object has no attribute 'get'
+2023-09-12 20:00:18 [ERROR] django.server "POST /delete_sala_all/ HTTP/1.1" 500 78508
+2023-09-12 20:01:00 [ERROR] django.request Internal Server Error: /delete_sala_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/utils/deprecation.py", line 138, in __call__
+    response = self.process_response(request, response)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/middleware/clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+AttributeError: 'tuple' object has no attribute 'get'
+2023-09-12 20:01:00 [ERROR] django.server "POST /delete_sala_all/ HTTP/1.1" 500 78642
+2023-09-12 20:03:04 [ERROR] django.request Internal Server Error: /delete_sala_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view sala.views.delete_salas_all didn't return an HttpResponse object. It returned None instead.
+2023-09-12 20:03:04 [ERROR] django.server "POST /delete_sala_all/ HTTP/1.1" 500 80066
+2023-09-12 20:03:20 [ERROR] django.request Internal Server Error: /delete_sala_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view sala.views.delete_salas_all didn't return an HttpResponse object. It returned None instead.
+2023-09-12 20:03:20 [ERROR] django.server "POST /delete_sala_all/ HTTP/1.1" 500 80066
+2023-09-12 20:14:22 [ERROR] django.request Internal Server Error: /delete_sala_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view sala.views.delete_salas_all didn't return an HttpResponse object. It returned None instead.
+2023-09-12 20:14:22 [ERROR] django.server "POST /delete_sala_all/ HTTP/1.1" 500 80066
+2023-09-12 20:19:23 [ERROR] django.request Internal Server Error: /delete_sala_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view sala.views.delete_salas_all didn't return an HttpResponse object. It returned None instead.
+2023-09-12 20:19:23 [ERROR] django.server "POST /delete_sala_all/ HTTP/1.1" 500 80066
+2023-09-12 20:19:45 [ERROR] django.request Internal Server Error: /delete_sala_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/sala/views.py", line 110, in delete_salas_all
+    return redirect("listar_salas",{'salas':salas})
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/shortcuts.py", line 48, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/shortcuts.py", line 145, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'listar_salas' with arguments '({'salas': <QuerySet [<Sala: Sala1>]>},)' not found. 1 pattern(s) tried: ['listarsalas/\\Z']
+2023-09-12 20:19:45 [ERROR] django.server "POST /delete_sala_all/ HTTP/1.1" 500 104315
+2023-09-12 20:20:09 [ERROR] django.request Internal Server Error: /delete_sala_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/sala/views.py", line 110, in delete_salas_all
+    return redirect("listar_salas",{'salas':salas})
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/shortcuts.py", line 48, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/shortcuts.py", line 145, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/urls/resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'listar_salas' with arguments '({'salas': <QuerySet [<Sala: Sala1>]>},)' not found. 1 pattern(s) tried: ['listarsalas/\\Z']
+2023-09-12 20:20:09 [ERROR] django.server "POST /delete_sala_all/ HTTP/1.1" 500 104341
+2023-09-12 20:23:08 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 60, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora, request)
+TypeError: send_email() missing 1 required positional argument: 'request'
+2023-09-12 20:23:08 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82648
+2023-09-12 20:27:17 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 20:44:41 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/agenda/agenda/reserva/views.py", line 60, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora,request)
+TypeError: send_email() missing 1 required positional argument: 'asunto'
+2023-09-12 20:44:41 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 82646
+2023-09-12 20:47:40 [ERROR] agenda Otro error: [Errno 110] Connection timed out
+2023-09-12 20:53:57 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "/home/vlopez/Documents/Desarrollo/agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view reserva.views.delete_reserva_all didn't return an HttpResponse object. It returned None instead.
+2023-09-12 20:53:57 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 80215
+2023-09-13 01:10:43 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-13 01:11:03 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
