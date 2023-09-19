@@ -48,6 +48,7 @@ def add_sala(request, id=0):
 
 
 
+@login_required
 
 def editar_sala(request, id):
     print(id)

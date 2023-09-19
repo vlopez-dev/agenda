@@ -16,17 +16,17 @@
             </div>
             <tr>
               <td>id</td>
-              <td></td>
               <td>Inicio</td>
               <td>Fin</td>
               <td>Sala</td>
+              <td></td>
+
             </tr>
         </thead>
         <tbody>
             {% for r in page_object  %}
                 <tr>
                     <td><input type="checkbox" name="ids_reserva_delete" value="{{ r.id }}">{{r.id}}</td>
-                    <td></td>
                     <td>{{r.tiempo_inicio}}</td>
                     <td>{{r.tiempo_fin}}</td>
                     <td>{{r.sala_id.nombre}}</td>

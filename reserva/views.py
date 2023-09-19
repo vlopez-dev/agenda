@@ -5,6 +5,7 @@ import threading
 from django.shortcuts import redirect, render
 from reserva.forms import ReservaForm
 import threading
+from django.contrib.auth.decorators import login_required
 
 from reserva.models import Reserva
 from sala.models import Sala
@@ -24,7 +25,7 @@ logger = logging.getLogger("agenda")
 # Create your views here.
 Connected = False
 
-
+@login_required
 def add_reserva(request,id=0):
     if request.method == "GET":
         if id == 0:
@@ -71,6 +72,7 @@ def add_reserva(request,id=0):
 
         return redirect("/home/")
 
+@login_required
 
 def send_email(invitados, descripcion, salaid, iniciohora, finhora,request,asunto):
     sender_email = "web@vic.uy"
@@ -123,6 +125,7 @@ def verificar_estado(salaid, dateiniciohora, datefinhora):
     else:
         return False
 
+@login_required
 
 def listar_reservas(request):
     reservas = Reserva.objects.select_related("sala_id", "username").order_by("tiempo_inicio")
@@ -141,6 +144,7 @@ def listar_reservas(request):
 
 
 
+@login_required
 
 def delete_reserva_all(request):
     if request.method == "POST":
@@ -179,6 +183,7 @@ def delete_reserva_all(request):
             reservas = Reserva.objects.all()
             return redirect("listar_reservas", {"reservas": reservas})
 
+@login_required
 
 def editar_reserva(request, id):
     reserva = Reserva.objects.get(pk=id)
