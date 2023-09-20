@@ -9,7 +9,6 @@ $(document).ready(function () {
 
 
 
-
 function fire(){
 Swal.fire({
       title: 'Are you sure?',

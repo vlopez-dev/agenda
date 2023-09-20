@@ -47,6 +47,27 @@ def add_sala(request, id=0):
         return redirect("/home/")
 
 
+
+@login_required
+
+def editar_sala(request, id):
+    print(id)
+    sala = Sala.objects.get(pk=id)
+    if request.method == "GET":
+        form = SalaForm(instance=sala)
+        return render(request, "sala/add_sala.html", {"form": form})
+    else:
+        form = SalaForm(request.POST, instance=sala)
+        if form.is_valid():
+            form.save()
+            sweetify.success(
+                request, "Exito", text="Editado Correctamente", persistent="Aceptar"
+            )
+        return redirect("/home/")
+    
+    
+    
+    
 @login_required
 def listar_salas(request):
     """
@@ -68,6 +89,8 @@ def listar_salas(request):
     }
     
     return render(request, "sala/listar_salas.html", context)
+
+
 
 
 @login_required
