@@ -105,6 +105,9 @@ TEMPLATES = [
     },
 ]
 
+
+
+
 WSGI_APPLICATION = "agenda.wsgi.application"
 
 

@@ -1650,3 +1650,302 @@ Traceback (most recent call last):
     sock.connect(sa)
 TimeoutError: [Errno 110] Connection timed out
 2023-09-19 14:56:51 [ERROR] django.server "POST /accounts/signup/ HTTP/1.1" 500 150507
+2023-09-21 01:43:04 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora,request,asunto="Reserva Realizada")
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'str' object has no attribute 'user'
+2023-09-21 01:43:04 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 92458
+2023-09-21 01:43:24 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 161, in delete_reserva_all
+    cancelacion = send_email(invitados=reserva.invitados,descripcion=reserva.descripcion,salaid=reserva.sala_id.nombre,iniciohora=dateiniciohora,finhora=datefinhora,asunto="Reserva Cancelada",request=request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+TypeError: send_email() got multiple values for argument 'invitados'
+2023-09-21 01:43:24 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 90767
+2023-09-21 01:46:22 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora,request,asunto="Reserva Realizada")
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'str' object has no attribute 'user'
+2023-09-21 01:46:22 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 92458
+2023-09-21 01:49:11 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 161, in delete_reserva_all
+    cancelacion = send_email(invitados=reserva.invitados,descripcion=reserva.descripcion,salaid=reserva.sala_id.nombre,iniciohora=dateiniciohora,finhora=datefinhora,asunto="Reserva Cancelada",request=request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+TypeError: send_email() got multiple values for argument 'invitados'
+2023-09-21 01:49:11 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 90788
+2023-09-21 01:49:50 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora,request,asunto="Reserva Realizada")
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'str' object has no attribute 'user'
+2023-09-21 01:49:50 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 92468
+2023-09-21 01:50:50 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora,request,asunto="Reserva Realizada")
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'str' object has no attribute 'user'
+2023-09-21 01:50:50 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 92392
+2023-09-21 01:54:34 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 60, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora,request,asunto="Reserva Realizada")
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'str' object has no attribute 'user'
+2023-09-21 01:54:34 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 87369
+2023-09-21 01:55:09 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 60, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora,request,asunto="Reserva Realizada")
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'str' object has no attribute 'user'
+2023-09-21 01:55:09 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 87369
+2023-09-21 01:56:38 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora,request,asunto="Reserva Realizada")
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'str' object has no attribute 'user'
+2023-09-21 01:56:38 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 92394
+2023-09-21 01:57:12 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 59, in add_reserva
+    reserva.username = request
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/db/models/fields/related_descriptors.py", line 235, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<WSGIRequest: POST '/reserva/addreserva/'>": "Reserva.username" must be a "User" instance.
+2023-09-21 01:57:12 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 91941
+2023-09-21 01:57:50 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 160, in delete_reserva_all
+    cancelacion = send_email(invitados=reserva.invitados,descripcion=reserva.descripcion,salaid=reserva.sala_id.nombre,iniciohora=dateiniciohora,finhora=datefinhora,asunto="Reserva Cancelada",request=request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+TypeError: send_email() got multiple values for argument 'invitados'
+2023-09-21 01:57:50 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 90775
+2023-09-21 01:58:19 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 61, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora,request,asunto="Reserva Realizada")
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'str' object has no attribute 'user'
+2023-09-21 01:58:19 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 92383
+2023-09-21 01:59:23 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 62, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora,request,asunto="Reserva Realizada")
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'str' object has no attribute 'user'
+2023-09-21 01:59:23 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 92348
+2023-09-21 13:38:32 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 62, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora,request,asunto="Reserva Realizada")
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'str' object has no attribute 'user'
+2023-09-21 13:38:32 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 92355
+2023-09-21 13:43:21 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 62, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora,request,asunto="Reserva Realizada")
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'str' object has no attribute 'user'
+2023-09-21 13:43:21 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 92356
+2023-09-21 13:45:16 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 63, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora,request,asunto="Reserva Realizada")
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'str' object has no attribute 'user'
+2023-09-21 13:45:16 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 92355
+2023-09-21 13:50:22 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 162, in delete_reserva_all
+    cancelacion = send_email(invitados=reserva.invitados,descripcion=reserva.descripcion,salaid=reserva.sala_id.nombre,iniciohora=dateiniciohora,finhora=datefinhora,asunto="Reserva Cancelada",request=request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+TypeError: send_email() got multiple values for argument 'invitados'
+2023-09-21 13:50:22 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 90763
+2023-09-21 13:50:54 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 63, in add_reserva
+    result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora,asunto="Reserva Realizada")
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
+    if test_func(request.user):
+AttributeError: 'str' object has no attribute 'user'
+2023-09-21 13:50:54 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 92276
+2023-09-21 13:53:55 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-21 13:54:36 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-21 13:55:24 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-21 13:55:38 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 161, in delete_reserva_all
+    cancelacion = send_email(invitados=reserva.invitados,descripcion=reserva.descripcion,salaid=reserva.sala_id.nombre,iniciohora=dateiniciohora,finhora=datefinhora,asunto="Reserva Cancelada",request=request)
+TypeError: send_email() got an unexpected keyword argument 'request'
+2023-09-21 13:55:38 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 85386
+2023-09-21 13:56:17 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-21 13:56:51 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-21 13:56:56 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-21 13:57:01 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-21 14:01:11 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-21 14:01:30 [ERROR] django.request Internal Server Error: /reserva/editar_reserva/27/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 221, in editar_reserva
+    modificacion = send_email(
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 97, in send_email
+    body=f"Se realizo una reserva de la sala "
+TypeError: can only concatenate str (not "datetime.datetime") to str
+2023-09-21 14:01:30 [ERROR] django.server "POST /reserva/editar_reserva/27/ HTTP/1.1" 500 90594
+2023-09-21 14:03:33 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-21 14:06:47 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2023-09-21 14:53:16 [ERROR] django.request Internal Server Error: /reserva/editar_reserva/27/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/entorno/lib/python3.9/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/views.py", line 213, in editar_reserva
+    print(reserva)
+  File "/home/vlopez/Documents/Desarrollo/Agenda/agenda/reserva/models.py", line 35, in __str__
+    return self.name
+AttributeError: 'Reserva' object has no attribute 'name'
+2023-09-21 14:53:16 [ERROR] django.server "GET /reserva/editar_reserva/27/ HTTP/1.1" 500 85716
+2023-09-21 14:55:49 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
