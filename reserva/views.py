@@ -19,14 +19,16 @@ from django.core.mail import EmailMessage
 from django.core.paginator import Paginator
 from django.contrib import messages
 import logging
+
 logger = logging.getLogger("agenda")
 
 
 # Create your views here.
 Connected = False
 
+
 @login_required
-def add_reserva(request,id=0):
+def add_reserva(request, id=0):
     if request.method == "GET":
         if id == 0:
             form = ReservaForm()
@@ -58,9 +60,21 @@ def add_reserva(request,id=0):
                 reserva = form.save(commit=False)
                 reserva.username = request.user
                 reserva.save()
-                result_env = send_email(invitados, descripcion, salaid, iniciohora, finhora,request,asunto="Reserva Realizada")
+                print(invitados)
+                result_env = send_email(
+                    invitados,
+                    descripcion,
+                    salaid,
+                    iniciohora,
+                    finhora,
+                    asunto="Reserva Realizada",
+                )
                 if result_env == None:
-                    sweetify.error(request, 'Error en el envio de mail, se realizo la reserva igualmente', persistent=":(")
+                    sweetify.error(
+                        request,
+                        "Error en el envio de mail, se realizo la reserva igualmente",
+                        persistent=":(",
+                    )
 
                 else:
                     sweetify.success(
@@ -72,12 +86,10 @@ def add_reserva(request,id=0):
 
         return redirect("/home/")
 
-@login_required
 
-def send_email(invitados, descripcion, salaid, iniciohora, finhora,request,asunto):
+def send_email(invitados, descripcion, salaid, iniciohora, finhora, asunto):
     sender_email = "web@vic.uy"
     recipient_list = invitados.split(";")
-    logger.debug(EMAIL_HOST_USER)
 
     email = EmailMessage(
         subject=asunto,
@@ -110,11 +122,6 @@ def send_email(invitados, descripcion, salaid, iniciohora, finhora,request,asunt
         email.get_connection().close()
 
 
-
-
-
-
-
 def verificar_estado(salaid, dateiniciohora, datefinhora):
     utc = pytz.UTC
     reservas = Reserva.objects.filter(
@@ -125,10 +132,12 @@ def verificar_estado(salaid, dateiniciohora, datefinhora):
     else:
         return False
 
-@login_required
 
+@login_required
 def listar_reservas(request):
-    reservas = Reserva.objects.select_related("sala_id", "username").order_by("tiempo_inicio")
+    reservas = Reserva.objects.select_related("sala_id", "username").order_by(
+        "tiempo_inicio"
+    )
 
     paginator = Paginator(reservas, 10)
     page_number = request.GET.get("page")
@@ -141,50 +150,63 @@ def listar_reservas(request):
     return render(request, "reserva/edit_reserva.html", context)
 
 
-
-
-
 @login_required
-
 def delete_reserva_all(request):
     if request.method == "POST":
         ids_reserva_delete = request.POST.getlist("ids_reserva_delete")
         ids_reserva_delete = list(map(int, ids_reserva_delete))
 
-        reservas=Reserva.objects.filter(id__in=ids_reserva_delete)
-        if ids_reserva_delete !=[]:
-            
+        reservas = Reserva.objects.filter(id__in=ids_reserva_delete)
+        if ids_reserva_delete != []:
             for reserva in reservas:
-                dateiniciohora = datetime.strftime(reserva.tiempo_inicio, "%d/%m/%Y %H:%M:%S")
-                datefinhora =  datetime.strftime(reserva.tiempo_fin, "%d/%m/%Y %H:%M:%S")
+                dateiniciohora = datetime.strftime(
+                    reserva.tiempo_inicio, "%d/%m/%Y %H:%M:%S"
+                )
+                datefinhora = datetime.strftime(reserva.tiempo_fin, "%d/%m/%Y %H:%M:%S")
 
-                cancelacion = send_email(invitados=reserva.invitados,descripcion=reserva.descripcion,salaid=reserva.sala_id.nombre,iniciohora=dateiniciohora,finhora=datefinhora,asunto="Reserva Cancelada",request=request)
+                cancelacion = send_email(
+                    invitados=reserva.invitados,
+                    descripcion=reserva.descripcion,
+                    salaid=reserva.sala_id.nombre,
+                    iniciohora=dateiniciohora,
+                    finhora=datefinhora,
+                    asunto="Reserva Cancelada",
+                )
                 print(cancelacion)
                 if cancelacion == True:
                     reserva.delete()
                     sweetify.success(
-                        request, "Exito", text="Eliminado Correctamente", persistent="Aceptar"
+                        request,
+                        "Exito",
+                        text="Eliminado Correctamente",
+                        persistent="Aceptar",
                     )
                 else:
                     sweetify.error(
-                        request, "Error", text="No se pudo enviar el correo de cancelación, pero igualmente se elimina del sistema", persistent="Aceptar")
+                        request,
+                        "Error",
+                        text="No se pudo enviar el correo de cancelación, pero igualmente se elimina del sistema",
+                        persistent="Aceptar",
+                    )
                     reserva.delete()
 
             return redirect("listar_reservas")
-        
+
         else:
-              sweetify.error(
-                    request, "Error", text="Debe seleccionar al menos una sala", persistent="Aceptar")
-              return redirect("listar_reservas")
-                 
-        
-        
+            sweetify.error(
+                request,
+                "Error",
+                text="Debe seleccionar al menos una sala",
+                persistent="Aceptar",
+            )
+            return redirect("listar_reservas")
+
     else:
-            reservas = Reserva.objects.all()
-            return redirect("listar_reservas", {"reservas": reservas})
+        reservas = Reserva.objects.all()
+        return redirect("listar_reservas", {"reservas": reservas})
+
 
 @login_required
-
 def editar_reserva(request, id):
     reserva = Reserva.objects.get(pk=id)
     if request.method == "GET":
@@ -193,14 +215,28 @@ def editar_reserva(request, id):
     else:
         form = ReservaForm(request.POST, instance=reserva)
         if form.is_valid():
-            form.save()
-            sweetify.success(
-                request, "Exito", text="Editado Correctamente", persistent="Aceptar"
-            )
+            dateiniciohora = datetime.strftime(reserva.tiempo_inicio, "%d/%m/%Y %H:%M:%S")
+            datefinhora = datetime.strftime(reserva.tiempo_fin, "%d/%m/%Y %H:%M:%S")
+
+            modificacion = send_email(
+                    invitados=reserva.invitados,
+                    descripcion=reserva.descripcion,
+                    salaid=reserva.sala_id.nombre,
+                    iniciohora=dateiniciohora,
+                    finhora=datefinhora,
+                    asunto="Reserva Modificada",
+                )
+            if modificacion == True:
+                reserva.save()
+           
+                sweetify.success(request, "Exito", text="Editado Correctamente", persistent="Aceptar")
+            else:
+                sweetify.error(request, "Error", text="No se pudo enviar el correo de modificación", persistent="Aceptar")
+                reserva.save()
+        
+        else:
+            sweetify.error(request, "Error", text="No se pudo editar", persistent="Aceptar")
         return redirect("/home/")
-    
-
-
 
 
 # def envio_recordatorio(id_reserva):
