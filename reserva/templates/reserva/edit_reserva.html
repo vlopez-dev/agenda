@@ -31,9 +31,13 @@
                     <td>{{r.tiempo_fin}}</td>
                     <td>{{r.sala_id.nombre}}</td>
                     <td>
+                        {% if perms.reserva.change_reserva %}
                         <a href="{% url 'editar_reserva' r.id %}" class="btn text-secondary px-0">
                             <img src="{% static 'icons/edit.svg' %}" alt="">
                         </a>
+                        {% endif %}
+                        
+                        {% if perms.reserva.delete_reserva %}
                         <form action="{% url 'delete_reserva_all'  %}" method="post" class="d-inline">
                             {% csrf_token %}
                             <input type="hidden" name="id_reserva_individual" value="{{ r.id }}">
@@ -41,15 +45,18 @@
                                 <img src="{% static 'icons/trash-2.svg' %}" alt="">
                             </button>
                         </form>
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 
+    {% if perms.reserva.delete_reserva %}
     <button type="submit" class="btn btn-danger float-right" onclick="return confirm('¿Estás seguro de que deseas eliminar todas las reservas seleccionadas?')">
         <img src="{% static 'icons/trash-all.svg' %}" alt="">
     </button>
+    {% endif %}
 
 </form>
 

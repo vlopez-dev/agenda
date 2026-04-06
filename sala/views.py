@@ -4,10 +4,11 @@ from .models import Sala
 from reserva.models import Reserva
 from .forms import SalaForm
 import sweetify
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.core.paginator import Paginator
 # Create your views here.
 @login_required
+@permission_required("sala.view_sala", raise_exception=True)
 def home(request):
     reservas = Reserva.objects.all()
     salas = Sala.objects.all()
@@ -15,6 +16,7 @@ def home(request):
 
 
 @login_required
+@permission_required("sala.add_sala", raise_exception=True)
 def add_sala(request, id=0):
     """_summary_
     Funcion para agregar Sala.
@@ -49,7 +51,7 @@ def add_sala(request, id=0):
 
 
 @login_required
-
+@permission_required("sala.change_sala", raise_exception=True)
 def editar_sala(request, id):
     print(id)
     sala = Sala.objects.get(pk=id)
@@ -69,6 +71,7 @@ def editar_sala(request, id):
     
     
 @login_required
+@permission_required("sala.view_sala", raise_exception=True)
 def listar_salas(request):
     """
     Función para listar todas las Salas
@@ -94,6 +97,7 @@ def listar_salas(request):
 
 
 @login_required
+@permission_required("sala.delete_sala", raise_exception=True)
 def delete_sala(request, id_sala):
     """Funcion para la eliminación de una sala
 
@@ -117,6 +121,7 @@ def delete_sala(request, id_sala):
 
 
 @login_required
+@permission_required("sala.delete_sala", raise_exception=True)
 def delete_salas_all(request):
     if request.method == 'POST':
         ids_sala_delete = request.POST.getlist('ids_sala_delete')

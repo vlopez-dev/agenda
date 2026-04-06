@@ -5,7 +5,7 @@ import threading
 from django.shortcuts import redirect, render
 from reserva.forms import ReservaForm
 import threading
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 from reserva.models import Reserva
 from sala.models import Sala
@@ -13,12 +13,13 @@ import sweetify
 import pytz
 from django.utils.dateparse import parse_date
 from django.contrib.auth.models import User
-from django.core.mail import send_mail
+from django.core.mail import send_mail, get_connection, EmailMessage
 from agenda.settings import EMAIL_HOST, EMAIL_HOST_PASSWORD, EMAIL_HOST_USER, EMAIL_PORT
-from django.core.mail import EmailMessage
 from django.core.paginator import Paginator
 from django.contrib import messages
+from configuracion.models import ConfigEmail
 import logging
+import uuid
 
 logger = logging.getLogger("agenda")
 
@@ -28,6 +29,7 @@ Connected = False
 
 
 @login_required
+@permission_required("reserva.add_reserva", raise_exception=True)
 def add_reserva(request, id=0):
     if request.method == "GET":
         if id == 0:
@@ -87,39 +89,79 @@ def add_reserva(request, id=0):
         return redirect("/home/")
 
 
+def generate_ics(titulo, descripcion, sala, inicio, fin):
+    """Genera el contenido de un archivo .ics para el calendario"""
+    # Formatear fechas para ICS (YYYYMMDDTHHMMSSZ)
+    def fmt(dt_str):
+        dt = datetime.strptime(dt_str, "%d/%m/%Y %H:%M:%S")
+        return dt.strftime("%Y%m%dT%H%M%SZ")
+
+    ics_content = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Agenda App//ES",
+        "METHOD:REQUEST",
+        "BEGIN:VEVENT",
+        f"UID:{uuid.uuid4()}",
+        f"DTSTAMP:{datetime.now().strftime('%Y%m%dT%H%M%SZ')}",
+        f"DTSTART:{fmt(inicio)}",
+        f"DTEND:{fmt(fin)}",
+        f"SUMMARY:{titulo}",
+        f"DESCRIPTION:{descripcion}",
+        f"LOCATION:{sala}",
+        "END:VEVENT",
+        "END:VCALENDAR"
+    ]
+    return "\n".join(ics_content)
+
+
 def send_email(invitados, descripcion, salaid, iniciohora, finhora, asunto):
-    sender_email = "web@vic.uy"
+    config = ConfigEmail.objects.last()
+    
+    # Configuramos la conexión dinámicamente si existe configuración en DB
+    connection = None
+    from_email = "web@vic.uy"
+    
+    if config:
+        from_email = config.default_from_email
+        connection = get_connection(
+            backend='django.core.mail.backends.smtp.EmailBackend',
+            host=config.email_host,
+            port=config.host_port,
+            username=config.host_user,
+            password=config.host_password,
+            use_tls=config.use_tls,
+            use_ssl=config.use_ssl,
+        )
+
     recipient_list = invitados.split(";")
+    
+    body = (
+        f"Se realizó una reserva de la sala {salaid} para el evento: {descripcion}\n\n"
+        f"Inicio: {iniciohora}\n"
+        f"Fin: {finhora}\n\n"
+        "Se adjunta la invitación para su calendario."
+    )
 
     email = EmailMessage(
         subject=asunto,
-        body=f"Se realizo una reserva de la sala "
-        + salaid
-        + "para el evento "
-        + descripcion
-        + " a la hora de inico "
-        + iniciohora
-        + " y finalizacion "
-        + finhora,
-        from_email=sender_email,
+        body=body,
+        from_email=from_email,
         to=recipient_list,
+        connection=connection
     )
-    try:
-        logger.debug("Entre al try para enviar el email")
 
+    # Generar y adjuntar archivo ICS
+    ics_data = generate_ics(asunto, descripcion, salaid, iniciohora, finhora)
+    email.attach("invitacion.ics", ics_data, "text/calendar")
+
+    try:
+        logger.debug("Intentando enviar email con invitación de calendario")
         email.send()
         return True
-
-    except SMTPAuthenticationError as auth_error:
-        logger.error(f"Error de autenticación SMTP: {str(auth_error)}")
-        return None
-
     except Exception as e:
-        logger.error(f"Otro error: {str(e)}")
+        logger.error(f"Error al enviar email: {str(e)}")
         return None
-
-    finally:
-        email.get_connection().close()
 
 
 def verificar_estado(salaid, dateiniciohora, datefinhora):
@@ -134,6 +176,7 @@ def verificar_estado(salaid, dateiniciohora, datefinhora):
 
 
 @login_required
+@permission_required("reserva.view_reserva", raise_exception=True)
 def listar_reservas(request):
     reservas = Reserva.objects.select_related("sala_id", "username").order_by(
         "tiempo_inicio"
@@ -151,6 +194,7 @@ def listar_reservas(request):
 
 
 @login_required
+@permission_required("reserva.delete_reserva", raise_exception=True)
 def delete_reserva_all(request):
     if request.method == "POST":
         ids_reserva_delete = request.POST.getlist("ids_reserva_delete")
@@ -207,6 +251,7 @@ def delete_reserva_all(request):
 
 
 @login_required
+@permission_required("reserva.change_reserva", raise_exception=True)
 def editar_reserva(request, id):
     reserva = Reserva.objects.get(pk=id)
     if request.method == "GET":

@@ -30,9 +30,13 @@
                     <td>{{r.nombre}}</td>
                     <td>{{r.ubicacion}}</td>
                     <td>
+                        {% if perms.sala.change_sala %}
                         <a href="{% url 'editar_sala' r.id %}" class="btn text-secondary px-0">
                             <img src="{% static 'icons/edit.svg' %}" alt="">
                         </a>
+                        {% endif %}
+                        
+                        {% if perms.sala.delete_sala %}
                         <form action="{% url 'delete_sala_all' %}" method="post" class="d-inline">
                             {% csrf_token %}
                             <input type="hidden" name="id_sala_individual" value="{{ r.id }}">
@@ -40,16 +44,18 @@
                                 <img src="{% static 'icons/trash-2.svg' %}" alt="">
                             </button>
                         </form>
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 
+    {% if perms.sala.delete_sala %}
     <button type="submit" class="btn btn-danger float-right" onclick="return confirm('¿Estás seguro de que deseas eliminar todas las salas seleccionadas?')">
         <img src="{% static 'icons/trash-all.svg' %}" alt="">
-
     </button>
+    {% endif %}
 
 </form>
 

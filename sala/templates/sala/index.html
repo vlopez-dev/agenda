@@ -1,132 +1,141 @@
 {% extends 'sala/base.html' %} 
 
 {% load bootstrap5 %}
- {% load static %} 
- {% block content %} 
- {% block extra_css %}
-<link href="{% static 'js/lib/main.css' %}" rel="stylesheet" />
+{% load static %} 
 
+{% block extra_css %}
+<link href="{% static 'js/lib/main.css' %}" rel="stylesheet" />
+<style>
+  /* Custom fixes for the calendar in our modern theme */
+  .fc-view-harness {
+    background: white;
+  }
+  .fc .fc-toolbar-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+</style>
 {% endblock extra_css %}
 
-<div id="calendar" class="container shadow" style="padding: 20px"></div>
+{% block content %} 
+<div id="calendar" class="shadow-sm"></div>
 
-<div id="EventDetail" class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+<!-- Modal for details -->
+<div id="EventDetail" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 id="title" class="modal-title"></h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-          onclick="closeModal()"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 id="title" class="modal-title font-weight-bold"></h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
       </div>
-      <div class="modal-body">
-        <h5>Lugar: <span id="sala"></span></h5>
-        <hr />
-        <p id="description">
-
-        </p>
-        <hr />
-
-        <p>invitados: <span id="invitados"> </span></p>
+      <div class="modal-body p-4">
+        <div class="mb-3">
+          <label class="text-muted small text-uppercase font-weight-bold">Lugar</label>
+          <h5 id="sala" class="text-primary"></h5>
+        </div>
+        <hr class="opacity-10">
+        <div class="mb-3">
+          <label class="text-muted small text-uppercase font-weight-bold">Descripción</label>
+          <p id="description" class="text-secondary"></p>
+        </div>
+        <hr class="opacity-10">
+        <div class="mb-3">
+          <label class="text-muted small text-uppercase font-weight-bold">Horario</label>
+          <p id="horario" class="text-dark"></p>
+        </div>
+        <hr class="opacity-10">
+        <div>
+          <label class="text-muted small text-uppercase font-weight-bold">Invitados</label>
+          <p id="invitados" class="text-dark"></p>
+        </div>
       </div>
       <div class="modal-footer">
-        <button
-          id="close_modal"
-          type="button"
-          class="btn btn-secondary"
-          data-dismiss="modal"
-          onclick="closeModal()"
-        >
-          Cerrar
-        </button>
+        <button id="close_modal" type="button" class="btn btn-light rounded-pill" data-dismiss="modal" onclick="closeModal()">Cerrar</button>
       </div>
     </div>
   </div>
 </div>
+{% endblock content %}
 
 {% block extra_js %}
-<script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"
-></script>
 <script src="{% static 'js/lib/main.js' %}"></script>
 <script src="{% static 'js/lib/locales-all.js' %}"></script>
 
 <script>
-  document.addEventListener('DOMContentLoaded',function(){
+  document.addEventListener('DOMContentLoaded', function() {
       var calendarUI = document.getElementById('calendar');
-      var calendar = new FullCalendar.Calendar(calendarUI,{
+      if (!calendarUI) return;
+
+      var calendar = new FullCalendar.Calendar(calendarUI, {
           contentHeight: 'auto',
           themeSystem: 'bootstrap5',
+          locale: 'es',
           headerToolbar: {
-          center: 'title',
-          left: 'prev,next,today',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
-       },
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+          },
+          buttonText: {
+            today: 'Hoy',
+            month: 'Mes',
+            week: 'Semana',
+            day: 'Día',
+            list: 'Agenda'
+          },
+          eventClick: function (info) {
+              document.getElementById('title').innerText = info.event.title || 'Reserva';
+              document.getElementById('description').innerText = info.event.extendedProps.description || 'Sin descripción';
+              document.getElementById('sala').innerText = info.event.extendedProps.sala || 'No especificada';
+              document.getElementById('invitados').innerText = info.event.extendedProps.invitados || 'Ninguno';
+              
+              const start = info.event.start ? info.event.start.toLocaleString('es-ES', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' }) : 'No definida';
+              const end = info.event.end ? info.event.end.toLocaleString('es-ES', { hour:'2-digit', minute:'2-digit' }) : '';
+              document.getElementById('horario').innerText = start + (end ? ' a ' + end : '');
 
-       eventClick: function (info) {
-          document.getElementById('title').innerHTML = info.event.title;
-          document.getElementById('description').innerHTML = info.event.extendedProps.description;
-          document.getElementById('sala').innerHTML = info.event.extendedProps.sala;
-          document.getElementById('invitados').innerHTML = info.event.extendedProps.invitados;
-
-
-          $('#EventDetail').modal('show');
-      },
-
-
-          events:[
+              // Fallback for modal: try jQuery first (sb-admin usually uses it), then native
+              try {
+                  if (window.jQuery && jQuery.fn.modal) {
+                      $('#EventDetail').modal('show');
+                  } else {
+                      const modal = new bootstrap.Modal(document.getElementById('EventDetail'));
+                      modal.show();
+                  }
+              } catch (e) {
+                  console.error('Error al abrir modal:', e);
+              }
+          },
+          events: [
               {% for r in reservas %}
-
-                  {
-                      title: "{{r.titulo}}",
-                      description: "{{r.descripcion}}",
-
-                      start: '{{r.tiempo_inicio | date:"Y-m-d H:i:s" }}',
-                      end:'{{r.tiempo_fin | date:"Y-m-d H:i:s" }}',
-
-                      extendedProps: {
-                        invitados: "{{r.invitados}}",
-                        {% for s in salas %}
-                          {% if r.sala_id_id == s.id%}
-                          sala:"{{s.nombre}}",
-
-                          {% endif %}
-
-                          {% endfor %}
-
-                        },
-                        {% for s in salas %}
-                        {% if r.sala_id_id == s.id%}
-
-                          color:"{{s.color}}",            //la solucion de colores esta por aca
-                          {% endif %}
-
-                          {% endfor %}
+              {
+                  title: "{{r.titulo|escapejs}}",
+                  description: "{{r.descripcion|escapejs}}",
+                  start: '{{r.tiempo_inicio | date:"Y-m-d H:i:s" }}',
+                  end: '{{r.tiempo_fin | date:"Y-m-d H:i:s" }}',
+                  extendedProps: {
+                    invitados: "{{r.invitados|escapejs}}",
+                    {% for s in salas %}
+                      {% if r.sala_id_id == s.id %}
+                      sala: "{{s.nombre|escapejs}}",
+                      {% endif %}
+                    {% endfor %}
                   },
+                  {% for s in salas %}
+                    {% if r.sala_id_id == s.id %}
+                    color: "{{s.color}}",
+                    {% endif %}
+                  {% endfor %}
+              },
               {% endfor %}
-        ],
-          eventDidMount: function(info) {
-              console.log(info.event.extendedProps);
-            }
+          ]
       });
+
       calendar.render();
-      calendar.setOption('locale','es');
-
-  })
-
+  });
 
   function closeModal() {
-    $('#EventDetail').modal('hide');
-
+    const modalElement = document.getElementById('EventDetail');
+    const modal = bootstrap.Modal.getInstance(modalElement);
+    if (modal) modal.hide();
   }
 </script>
 {% endblock extra_js %}
- {% endblock content %}

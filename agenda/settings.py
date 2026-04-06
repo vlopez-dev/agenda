@@ -25,7 +25,7 @@ DB_HOST = os.getenv('DB_HOST')
 DB_PORT = os.getenv('DB_PORT')
 
 
-EMAIL_BACKEND=os.getenv('EMAIL_BACKEND')
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend')
 EMAIL_HOST=os.getenv('EMAIL_HOST')
 EMAIL_PORT=os.getenv('EMAIL_PORT')
 EMAIL_HOST_USER=os.getenv('EMAIL_HOST_USER')
@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "sala",
     "reserva",
+    "configuracion",
     "sweetify",
     "colorfield",
     'django_pagination_bootstrap',
@@ -97,7 +98,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "django.template.context_processors.request",
-
+                "reserva.context_processors.list_notificaciones",
             ],
         },
     },
@@ -113,13 +114,9 @@ WSGI_APPLICATION = "agenda.wsgi.application"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME":DB_AGENDA_TEST_NAME,
-        "USER":DB_AGENDA_TEST_USER,
-        "PASSWORD":DB_AGENDA_TEST_PASSWORD,
-        "HOST":DB_HOST,
-        "PORT":DB_PORT,
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -182,7 +179,7 @@ EMAIL_USE_TLS=False
 EMAIL_USE_SSL=True
 
 
-CSRF_TRUSTED_ORIGINS = ['https://agenda.vic.uy']
+CSRF_TRUSTED_ORIGINS = ['https://agenda.vic.uy', 'http://localhost:8000', 'http://127.0.0.1:8000']
 
 
 

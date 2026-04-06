@@ -1,103 +1,302 @@
-
-.form-aline{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: auto;
-    height: auto;
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --bg-color: #f8fafc;
+  --sidebar-bg: rgba(255, 255, 255, 0.8);
+  --sidebar-text: #1e293b;
+  --card-bg: rgba(255, 255, 255, 1);
+  --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --login-bg: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
 }
 
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: #334155;
+  overflow-x: hidden;
+}
 
+/* Login Page Modernization */
+.login-page {
+  background: var(--login-bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.login-card {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(20px);
+  border-radius: 24px !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2) !important;
+  overflow: hidden;
+  max-width: 450px;
+  width: 100%;
+}
 
+.login-brand {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  letter-spacing: -1px;
+}
 
+.btn-primary {
+  background: var(--primary);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.4);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
+}
+
+/* Form Styles */
+.form-control {
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  padding: 0.75rem 1rem;
+  transition: all 0.2s;
+}
+
+.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+/* Sidebar Brand rotate fix */
+.sidebar-brand-icon {
+  display: none !important;
+}
+
+/* Glassmorphism Sidebar */
+#accordionSidebar {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-right: 1px solid var(--glass-border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.02);
+}
+
+#accordionSidebar .sidebar-brand-text {
+  color: var(--primary) !important;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+
+#accordionSidebar .sidebar-heading {
+  color: #94a3b8 !important;
+  font-weight: 700;
+  font-size: 0.7rem;
+  padding: 0 1.5rem 0.5rem;
+}
+
+#accordionSidebar .nav-link {
+  color: #334155 !important;
+  font-weight: 600;
+  padding: 0.75rem 1rem !important;
+  border-radius: 12px;
+  margin: 0.2rem 0.5rem;
+  transition: all 0.2s;
+  width: auto !important;
+}
+
+#accordionSidebar .nav-link:hover,
+#accordionSidebar .nav-item.active .nav-link {
+  background: rgba(99, 102, 241, 0.1) !important;
+  color: var(--primary) !important;
+}
+
+#accordionSidebar .nav-link img {
+  filter: invert(41%) sepia(82%) saturate(2461%) hue-rotate(222deg) brightness(98%) contrast(93%) !important;
+  width: 22px !important;
+  height: 22px !important;
+  margin-right: 12px;
+}
+
+#accordionSidebar .nav-link span {
+  color: inherit !important;
+}
+
+/* Sidebar Divider */
+.sidebar-divider {
+  border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+  margin: 1rem 0 !important;
+}
+
+/* Topbar Improvements */
+.topbar {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03) !important;
+}
+
+.topbar .nav-link {
+  color: #64748b !important;
+}
+
+/* Cards & Calendar Container */
 #calendar {
-    max-width: 1100px;
-    margin: 40px auto;
-  }
- 
-
-  .btn-group-vertical>.btn.active,
-.btn-group-vertical>.btn:active,
-.btn-group-vertical>.btn:focus,
-.btn-group>.btn.active,
-.btn-group>.btn:active,
-.btn-group>.btn:focus {
-    z-index: 0 !important;
+  background: white;
+  border-radius: 24px !important;
+  border: none !important;
+  padding: 1.5rem !important;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1) !important;
+  margin-top: 10px !important;
+  margin-bottom: 300px !important;
 }
 
-
-  
-  @media (max-width: 767.98px) {
-    .fc .fc-toolbar.fc-header-toolbar {
-        display: block;
-        text-align: center;
-        z-index: 0;
-    }
-
-    .fc-header-toolbar .fc-toolbar-chunk {
-        display: block;
-    }
+/* FullCalendar Custom Overrides */
+.fc .fc-toolbar-title {
+  font-weight: 700 !important;
+  color: #1e293b;
+  font-size: 1.25rem !important;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-.wrapper {
-    display: flex;
-    width: 100%;
-    align-items: stretch;
+.fc .fc-button-primary {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  border-radius: 8px !important;
+  padding: 6px 12px !important;
+  font-weight: 500 !important;
+  text-transform: capitalize !important;
+  transition: all 0.2s !important;
 }
 
-
-#sidebar {
-    min-width: 250px;
-    max-width: 250px;
-    min-height: 100vh;
-
+.fc .fc-button-primary:hover {
+  background-color: var(--primary-hover) !important;
+  border-color: var(--primary-hover) !important;
 }
 
-#sidebar.active {
-    margin-left: -250px;
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: rgba(99, 102, 241, 0.05) !important;
 }
 
-
-a[data-toggle="collapse"] {
-    position: relative;
+.fc .fc-event {
+  border-radius: 6px !important;
+  border: none !important;
+  padding: 2px 4px !important;
+  font-size: 0.85rem !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
 }
 
-.dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-}
-
-
+/* Mobile Adjustments */
 @media (max-width: 768px) {
-    #sidebar {
-        margin-left: -250px;
-    }
-    #sidebar.active {
-        margin-left: 0;
-    }
+  #accordionSidebar {
+    width: 0 !important;
+    min-width: 0 !important;
+    overflow-x: hidden;
+    position: fixed;
+    z-index: 1060;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: block !important;
+  }
+
+  #accordionSidebar.mobile-show {
+    width: 280px !important;
+    min-width: 280px !important;
+    box-shadow: 20px 0 50px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  /* Overlay implementation */
+  .mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    z-index: 1055;
+    display: none;
+  }
+
+  .mobile-overlay.show {
+    display: block;
+  }
+
+  body #wrapper #content-wrapper {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  #calendar {
+    padding: 10px !important;
+    border-radius: 12px !important;
+  }
+
+  .fc .fc-toolbar {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .fc .fc-toolbar-title {
+    font-size: 1rem !important;
+  }
+
+  /* Optimize topbar for small screens */
+  .topbar {
+    padding: 0 0.5rem !important;
+  }
 }
 
+/* Custom Floating Action Button for Mobile Toggle */
+#sidebarToggleTop {
+  color: var(--primary) !important;
+  background: white !important;
+  box-shadow: var(--card-shadow) !important;
+}
 
-.btn-notstyle{
-    background: none;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
+/* Modal Styling */
+.modal-content {
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: #f8fafc;
+  border-radius: 20px 20px 0 0;
+}
+
+.modal-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Sidebar Dropdown Clean Up */
+.collapse-inner {
+  background: transparent !important;
+  border: none !important;
+}
+
+.collapse-item {
+  color: #475569 !important;
+  font-weight: 500 !important;
+  padding: 0.5rem 1.5rem !important;
+  border-radius: 8px !important;
+  font-size: 0.9rem !important;
+}
+
+.collapse-item:hover {
+  background: rgba(99, 102, 241, 0.05) !important;
+  color: var(--primary) !important;
 }

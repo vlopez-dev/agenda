@@ -10,18 +10,10 @@
     <meta name="author" content="">
     {% load static %}
 
-    <title>Agenda Dashboard</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-        <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
-
-    <!-- Custom styles for this template-->
+    <!-- Custom scripts and styles -->
     <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <!-- jQuery must be in head if scripts in body use $ globally -->
     <script src="{% static 'vendor/jquery/jquery.js' %}"></script>
 
     {% block extra_css %} 
@@ -32,6 +24,7 @@
 <body id="page-top">
 
     <!-- Page Wrapper -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -73,9 +66,12 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Reservas:</h6>
+                        {% if perms.reserva.add_reserva %}
                         <a id="cerrar-navbar" class="collapse-item" href="{% url 'add_reserva' %}">Nueva</a>
+                        {% endif %}
+                        {% if perms.reserva.view_reserva %}
                         <a  id="cerrar-navbar"class="collapse-item" href="{% url 'listar_reservas' %}">Editar/Eliminar</a>
-
+                        {% endif %}
                     </div>
                 </div>
             </li>
@@ -91,8 +87,12 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Salas:</h6>
+                        {% if perms.sala.add_sala %}
                         <a id="cerrar-navbar" class="collapse-item" href="{% url 'add_sala' %}">Nueva</a>
+                        {% endif %}
+                        {% if perms.sala.view_sala %}
                         <a class="collapse-item" href="{% url 'listar_salas' %}">Editar/Eliminar</a>
+                        {% endif %}
                     </div>
                 </div>
             </li>
@@ -135,10 +135,10 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow sticky-top">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
 
@@ -177,32 +177,31 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a> 
+                                <span class="badge badge-danger badge-counter">{{ notif_count }}</span>
+                            </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
-                                    
-                                    Alerts Center
+                                    Notificaciones
                                 </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                {% for r in recent_reservations %}
+                                <a class="dropdown-item d-flex align-items-center" href="{% url 'listar_reservas' %}">
                                     <div class="mr-3">
                                         <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
+                                            <i class="fas fa-calendar-alt text-white"></i>
                                         </div>
                                     </div>
                                     <div>
-                                        {% if messages %}
-                                        {% for message in messages %}
-                                        <div class="small text-gray-500">{{ message }}</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                        {% endfor %}
-
-                                        {% endif %}
+                                        <div class="small text-gray-500">{{ r.tiempo_inicio|date:"d/m/Y H:i" }}</div>
+                                        <span class="font-weight-bold">Nueva reserva: {{ r.titulo }}</span>
+                                        <div class="small text-gray-400">Sala: {{ r.sala_id.nombre }}</div>
                                     </div>
                                 </a>
-                          
+                                {% empty %}
+                                <a class="dropdown-item text-center small text-gray-500" href="#">No hay reservas recientes</a>
+                                {% endfor %}
+                                <a class="dropdown-item text-center small text-gray-500" href="{% url 'listar_reservas' %}">Ver todas</a>
                             </div>
                         </li>
 
@@ -319,16 +318,14 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-
-
-                    <div class="row">
-                        <div class="col-md-1"></div>
-                        <div class="col-xl-10 col-lg-7">
-                            
+                <div class="container-fluid px-4">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-xl-11">
                                     {% block content %}
                                     {% endblock content %}
-            <div class="col-md-1"></div>
-
+                        </div>
+                    </div>
+                </div>
         </div>
         <!-- End of Content Wrapper -->
 
@@ -364,18 +361,32 @@
 
     <script>
         $(document).ready(function() {
-          // Agregue un evento click al enlace de cada elemento del menú
-          $('#accordionSidebar a').click(function() {
-            // Cierra el navbar
-            $('#sidebar').removeClass('show');
-            console.log("Ejecute el cierre")
+          // Mobile Sidebar Toggle
+          $('#sidebarToggleTop').click(function(e) {
+            e.preventDefault();
+            $('#accordionSidebar').toggleClass('mobile-show');
+            $('#mobileOverlay').toggleClass('show');
+          });
+
+          // Close sidebar when clicking overlay or outside
+          $('#mobileOverlay, #sidebarToggle, .collapse-item').click(function() {
+            $('#accordionSidebar').removeClass('mobile-show');
+            $('#mobileOverlay').removeClass('show');
+          });
+
+          $(document).click(function(event) { 
+            var $target = $(event.target);
+            if(!$target.closest('#accordionSidebar').length && 
+               !$target.closest('#sidebarToggleTop').length && 
+               $('#accordionSidebar').hasClass('mobile-show')) {
+              $('#accordionSidebar').removeClass('mobile-show');
+              $('#mobileOverlay').removeClass('show');
+            }        
           });
         });
       </script>
 
-    <script src="{% static 'vendor/jquery/jquery.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
+    <!-- Bootstrap bundle should be after jQuery -->
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
     <!-- Core plugin JavaScript-->
@@ -386,7 +397,8 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{% static 'js/app.js'%}"></script>
 
-   
+    {% block extra_js %}
+    {% endblock extra_js %}
 {% load sweetify %}
 {% sweetify %}
 

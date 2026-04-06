@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 import sweetify
 from configuracion.forms import ConfigEmailForm
 from configuracion.models import ConfigEmail
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 # Create your views here.
 
@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 
 @login_required
+@permission_required("configuracion.add_configemail", raise_exception=True)
 def add_confemail(request,id=0):
     
     if request.method == "GET":

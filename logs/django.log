@@ -1883,3 +1883,311 @@ Traceback (most recent call last):
 AttributeError: 'Reserva' object has no attribute 'name'
 2023-09-21 14:53:16 [ERROR] django.server "GET /reserva/editar_reserva/27/ HTTP/1.1" 500 85716
 2023-09-21 14:55:49 [ERROR] agenda Error de autenticación SMTP: (535, b'5.7.8 Authentication failed')
+2026-03-31 17:50:15 [ERROR] agenda Otro error: 'NoneType' object has no attribute 'rsplit'
+2026-03-31 17:50:15 [ERROR] django.request Internal Server Error: /reserva/addreserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/agenda/reserva/views.py", line 64, in add_reserva
+    result_env = send_email(
+                 ^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/agenda/reserva/views.py", line 122, in send_email
+    email.get_connection().close()
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/core/mail/message.py", line 255, in get_connection
+    self.connection = get_connection(fail_silently=fail_silently)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/core/mail/__init__.py", line 50, in get_connection
+    klass = import_string(backend or settings.EMAIL_BACKEND)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/utils/module_loading.py", line 25, in import_string
+    module_path, class_name = dotted_path.rsplit(".", 1)
+                              ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'rsplit'
+2026-03-31 17:50:15 [ERROR] django.server "POST /reserva/addreserva/ HTTP/1.1" 500 104551
+2026-03-31 17:59:43 [ERROR] django.request Internal Server Error: /admin/reserva/reserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/db/models/options.py", line 672, in get_field
+    return self.fields_map[field_name]
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: '__str__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/admin/utils.py", line 271, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/admin/utils.py", line 302, in _get_non_gfk_field
+    field = opts.get_field(name)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/db/models/options.py", line 674, in get_field
+    raise FieldDoesNotExist(
+django.core.exceptions.FieldDoesNotExist: Reserva has no field named '__str__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 958, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 958, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 958, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 958, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 958, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/admin/templatetags/base.py", line 45, in render
+    return super().render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/library.py", line 260, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/admin/templatetags/admin_list.py", line 336, in result_list
+    "results": list(results(cl)),
+               ^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/admin/templatetags/admin_list.py", line 312, in results
+    yield ResultList(None, items_for_result(cl, res, None))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/admin/templatetags/admin_list.py", line 303, in __init__
+    super().__init__(*items)
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/admin/templatetags/admin_list.py", line 213, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/admin/utils.py", line 284, in lookup_field
+    value = attr()
+            ^^^^^^
+  File "/home/vlopez/Documents/Agenda/agenda/reserva/models.py", line 35, in __str__
+    return self.name
+           ^^^^^^^^^
+AttributeError: 'Reserva' object has no attribute 'name'
+2026-03-31 17:59:43 [ERROR] django.server "GET /admin/reserva/reserva/ HTTP/1.1" 500 349682
+2026-03-31 18:47:35 [ERROR] django.request Internal Server Error: /reserva/delete_reserva_all/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/agenda/reserva/views.py", line 162, in delete_reserva_all
+    dateiniciohora = datetime.strftime(
+                     ^^^^^^^^^^^^^^^^^^
+TypeError: descriptor 'strftime' for 'datetime.date' objects doesn't apply to a 'NoneType' object
+2026-03-31 18:47:35 [ERROR] django.server "POST /reserva/delete_reserva_all/ HTTP/1.1" 500 85751
+2026-03-31 18:48:04 [ERROR] django.request Internal Server Error: /admin/reserva/reserva/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/db/models/options.py", line 672, in get_field
+    return self.fields_map[field_name]
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: '__str__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/admin/utils.py", line 271, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/admin/utils.py", line 302, in _get_non_gfk_field
+    field = opts.get_field(name)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/db/models/options.py", line 674, in get_field
+    raise FieldDoesNotExist(
+django.core.exceptions.FieldDoesNotExist: Reserva has no field named '__str__'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 958, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 958, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 958, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 958, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/base.py", line 958, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/admin/templatetags/base.py", line 45, in render
+    return super().render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/template/library.py", line 260, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/admin/templatetags/admin_list.py", line 336, in result_list
+    "results": list(results(cl)),
+               ^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/admin/templatetags/admin_list.py", line 312, in results
+    yield ResultList(None, items_for_result(cl, res, None))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/admin/templatetags/admin_list.py", line 303, in __init__
+    super().__init__(*items)
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/admin/templatetags/admin_list.py", line 213, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/admin/utils.py", line 284, in lookup_field
+    value = attr()
+            ^^^^^^
+  File "/home/vlopez/Documents/Agenda/agenda/reserva/models.py", line 35, in __str__
+    return self.name
+           ^^^^^^^^^
+AttributeError: 'Reserva' object has no attribute 'name'
+2026-03-31 18:48:04 [ERROR] django.server "GET /admin/reserva/reserva/ HTTP/1.1" 500 349682
+2026-03-31 19:56:23 [ERROR] agenda Otro error: 'NoneType' object has no attribute 'rsplit'
+2026-03-31 19:56:23 [ERROR] django.request Internal Server Error: /reserva/editar_reserva/35/
+Traceback (most recent call last):
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/agenda/reserva/views.py", line 221, in editar_reserva
+    modificacion = send_email(
+                   ^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/agenda/reserva/views.py", line 122, in send_email
+    email.get_connection().close()
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/core/mail/message.py", line 255, in get_connection
+    self.connection = get_connection(fail_silently=fail_silently)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/core/mail/__init__.py", line 50, in get_connection
+    klass = import_string(backend or settings.EMAIL_BACKEND)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vlopez/Documents/Agenda/entorno/lib/python3.12/site-packages/django/utils/module_loading.py", line 25, in import_string
+    module_path, class_name = dotted_path.rsplit(".", 1)
+                              ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'rsplit'
+2026-03-31 19:56:23 [ERROR] django.server "POST /reserva/editar_reserva/35/ HTTP/1.1" 500 104859

@@ -7,3 +7,4 @@ class SalaFactory(factory.django.DjangoModelFactory):
 
     nombre = factory.Faker('name')
     ubicacion = factory.Faker('city')
+    color = factory.Faker('hex_color')
