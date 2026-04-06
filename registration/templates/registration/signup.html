@@ -1,51 +1,25 @@
-{% extends 'registration/base-signup.html' %}
+{% extends 'registration/base-login.html' %}
 {% load bootstrap5 %}
-
 {% load crispy_forms_tags %}
-{{form.mobile|as_crispy_field}}
+
+{% block title %}Crear Cuenta{% endblock %}
+
+{% block auth_heading %}
+<h1 class="h5 text-gray-700 mb-4 font-weight-normal">Crear una cuenta nueva</h1>
+{% endblock %}
+
 {% block content %}
+<form action="" method="POST" autocomplete="off">
+    {% csrf_token %} 
+    {{ form|crispy }}
+    <hr class="my-4" style="opacity: 0.1">
+    <button type="submit" class="btn btn-primary w-100 shadow-sm border-0 py-2" style="border-radius: 12px; font-weight: 600;">Registrarse</button>
+</form>
+{% endblock %}
 
-    
-  
-    <form  action="" method="POST" autocomplete="off"  class="user">
-        {% csrf_token %} 
-
-        <div class="form-group">
-            {{ form.username|as_crispy_field }}
-
-        </div>
-
-       
-        <div class="form-group">
-            {{ form.email|as_crispy_field }}
-
-        </div>
-
-        <div class="form-group">
-            {{ form.password1|as_crispy_field }}
-
-        </div>
-        <div class="form-group">
-            {{ form.password2|as_crispy_field }}
-
-        </div>
-       
-
-
-      
-        <hr>
-        <button type="submit"class="btn btn-primary btn-user btn-block">Crear</button>
-
-       
-    </form>
-
-
-
-
-
-
-
-
-
-
-    {% endblock %}
+{% block auth_footer %}
+<hr class="my-4" style="opacity: 0.1">
+<div class="text-center">
+    <a class="small text-muted" href="{% url 'login' %}">¿Ya tienes cuenta? Inicia sesión</a>
+</div>
+{% endblock %}

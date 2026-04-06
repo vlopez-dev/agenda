@@ -88,6 +88,11 @@ body {
   border-right: 1px solid var(--glass-border);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 10px 0 30px rgba(0, 0, 0, 0.02);
+  z-index: 1050 !important;
+}
+
+#accordionSidebar .nav-item .collapse {
+  z-index: 1060 !important;
 }
 
 #accordionSidebar .sidebar-brand-text {
@@ -159,6 +164,8 @@ body {
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1) !important;
   margin-top: 10px !important;
   margin-bottom: 300px !important;
+  z-index: 1; /* Keep calendar below menus */
+  position: relative;
 }
 
 /* FullCalendar Custom Overrides */
@@ -181,6 +188,18 @@ body {
 .fc .fc-button-primary:hover {
   background-color: var(--primary-hover) !important;
   border-color: var(--primary-hover) !important;
+}
+
+/* Force icons to show check/arrows */
+.fc .fc-icon {
+  font-family: 'bootstrap-icons', 'Font Awesome 6 Free', 'Font Awesome 5 Free', 'fcicons', sans-serif !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.fc .fc-button .fc-icon::before {
+  font-weight: 900 !important;
 }
 
 .fc .fc-daygrid-day.fc-day-today {
@@ -262,7 +281,24 @@ body {
 #sidebarToggleTop {
   color: var(--primary) !important;
   background: white !important;
-  box-shadow: var(--card-shadow) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  width: 40px;
+  height: 40px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+#sidebarToggleTop:hover {
+  background: #f8fafc !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+#sidebarToggleTop i {
+  font-size: 1.1rem;
 }
 
 /* Modal Styling */
